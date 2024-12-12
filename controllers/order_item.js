@@ -1,7 +1,7 @@
 import { validationResult } from 'express-validator';
-import OrderItem from '../models/order_item.js';
-import Order from '../models/order.js';
-import Product from '../models/product.js';
+import { OrderItem } from '../models/index.js';
+import { Order } from '../models/index.js';
+import { Product } from '../models/index.js';
 import WebError from '../utils/webError.js';
 import extractMessage from '../utils/extractMessage.js';
 
@@ -101,7 +101,37 @@ const orderItemController = {
 			}
 			next(err);
 		});
-	}
+	},
+
+	updateOrderItemById(req, res, next) {
+		const id = req.params.id;
+		if (!id || !Number(id)) {
+			throw new WebError('Not a valid Id', 400);
+		}
+		return OrderItem.findOne({ where: { id: id } }).then((orderItem) => {
+			if (!orderItem) {
+				throw new WebError('OrderItem not found', 404);
+			}
+			orderItem.update(req.body).then((updatedOrderItem) => {
+				if (!updatedOrderItem) {
+					throw new WebError('Error while updating orderItem', 404);
+				}
+				return res.status(200).json({
+					orderItem: updatedOrderItem
+				});
+			}).catch((err) => {
+				if (!err.statusCode) {
+					err.statusCode = 500;
+				}
+				next(err);
+			});
+		}).catch((err) => {
+			if (!err.statusCode) {
+				err.statusCode = 500;
+			}
+			next(err);
+		});
+	},
 };
 
 export default orderItemController;

@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator';
-import User from '../models/user.js';
+import { User } from '../models/index.js';
 import WebError from '../utils/webError.js';
 import extractMessage from '../utils/extractMessage.js';
 import bcrypt from 'bcryptjs';
@@ -107,7 +107,36 @@ const userController = {
 			}
 			next(err);
 		});
-	}
+	},
+	updateUserById(req, res, next) {
+		const id = req.params.id;
+		if (!id || !Number(id)) {
+			throw new WebError('Not a valid Id', 400);
+		}
+		return User.findOne({ where: { id: id } }).then((user) => {
+			if (!user) {
+				throw new WebError('User not found', 404);
+			}
+			user.update(req.body).then((updatedUser) => {
+				if (!updatedUser) {
+					throw new WebError('Error while updating user', 404);
+				}
+				return res.status(200).json({
+					user: updatedUser
+				});
+			}).catch((err) => {
+				if (!err.statusCode) {
+					err.statusCode = 500;
+				}
+				next(err);
+			});
+		}).catch((err) => {
+			if (!err.statusCode) {
+				err.statusCode = 500;
+			}
+			next(err);
+		});
+	},
 };
 
 export default userController;

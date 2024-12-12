@@ -1,5 +1,5 @@
 import { validationResult } from 'express-validator';
-import Product from '../models/product.js';
+import { Product } from '../models/index.js';
 import WebError from '../utils/webError.js';
 import extractMessage from '../utils/extractMessage.js';
 
@@ -77,7 +77,37 @@ const productController = {
 			}
 			next(err);
 		});
-	}
+	},
+
+	updateProductById(req, res, next) {
+		const id = req.params.id;
+		if (!id || !Number(id)) {
+			throw new WebError('Not a valid Id', 400);
+		}
+		return Product.findOne({ where: { id: id } }).then((product) => {
+			if (!product) {
+				throw new WebError('Product not found', 404);
+			}
+			product.update(req.body).then((updatedProduct) => {
+				if (!updatedProduct) {
+					throw new WebError('Error while updating product', 404);
+				}
+				return res.status(200).json({
+					product: updatedProduct
+				});
+			}).catch((err) => {
+				if (!err.statusCode) {
+					err.statusCode = 500;
+				}
+				next(err);
+			});
+		}).catch((err) => {
+			if (!err.statusCode) {
+				err.statusCode = 500;
+			}
+			next(err);
+		});
+	},
 };
 
 export default productController;

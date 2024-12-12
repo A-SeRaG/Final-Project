@@ -1,6 +1,6 @@
 import { validationResult } from 'express-validator';
-import Order from '../models/order.js';
-import User from '../models/user.js';
+import { Order } from '../models/index.js';
+import { User } from '../models/index.js';
 import WebError from '../utils/webError.js';
 import extractMessage from '../utils/extractMessage.js';
 
@@ -96,7 +96,37 @@ const orderController = {
 			}
 			next(err);
 		});
-	}
+	},
+
+	updateOrderById(req, res, next) {
+		const id = req.params.id;
+		if (!id || !Number(id)) {
+			throw new WebError('Not a valid Id', 400);
+		}
+		return Order.findOne({ where: { id: id } }).then((order) => {
+			if (!order) {
+				throw new WebError('Order not found', 404);
+			}
+			order.update(req.body).then((updatedOrder) => {
+				if (!updatedOrder) {
+					throw new WebError('Error while updating order', 404);
+				}
+				return res.status(200).json({
+					order: updatedOrder
+				});
+			}).catch((err) => {
+				if (!err.statusCode) {
+					err.statusCode = 500;
+				}
+				next(err);
+			});
+		}).catch((err) => {
+			if (!err.statusCode) {
+				err.statusCode = 500;
+			}
+			next(err);
+		});
+	},
 };
 
 export default orderController;
