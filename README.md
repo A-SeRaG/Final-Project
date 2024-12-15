@@ -93,9 +93,9 @@ The database consists of the following tables:
 - Enhance user authentication with OAuth or multi-factor authentication.
 - Introduce analytics for admins to track sales and inventory.
 
-## Author
-Ahmed Serag
-Omar Ahmed
+## Authors
+Ahmed Serag,
+Omar Ahmed,
 Hager Hussein
 
 
