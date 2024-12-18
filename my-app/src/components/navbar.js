@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const NavbarScroll = () => {
@@ -35,15 +35,6 @@ const NavbarScroll = () => {
               <NavDropdown.Item id='nav-link-item' href="#action5">childern clothes</NavDropdown.Item>
             </NavDropdown>
 
-            <Nav.Link href="#" className="nav-i">
-            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-            </Nav.Link>
-            <Nav.Link href="#" className="nav-i">
-            <FontAwesomeIcon icon="fa-regular fa-heart" />
-            </Nav.Link>
-            <Nav.Link href="#" className="nav-i">
-            <FontAwesomeIcon icon="fa-solid fa-user" />
-            </Nav.Link>
           </Nav>
 
           <Form className="d-flex">
@@ -57,6 +48,16 @@ const NavbarScroll = () => {
             <FontAwesomeIcon style={{Color:'white'}} icon="fa-solid fa-magnifying-glass" />
             </Button>
           </Form>
+          
+          <Nav.Link href="#" className="nav-i m-2">
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+            </Nav.Link>
+            <Nav.Link href="#" className="nav-i m-2">
+            <FontAwesomeIcon icon="fa-regular fa-heart" />
+            </Nav.Link>
+            <Nav.Link href="/user" className="nav-i m-2">
+            <FontAwesomeIcon icon="fa-solid fa-user" />
+            </Nav.Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>

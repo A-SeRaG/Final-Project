@@ -9,6 +9,10 @@ import Release from './components/release.js';
 import Footer from './components/footer.js';
 import About from './components/about.js';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Erormessage from './components/eror.js';
+// import React, { useState } from 'react';
+import Contact from './components/contact.js';
+import Useracount from './components/useraccount.js';
 
 const HomePage = () => {
   return (
@@ -22,6 +26,8 @@ const HomePage = () => {
     </div>
   );
 };
+
+
 
 const App = () => {
   return (
@@ -38,12 +44,16 @@ const App = () => {
         
         {/* Default Route (home or main page) */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/user/:activepage" element={<Useracount />} />
+     
+        <Route path= "/*" element={<Erormessage />} />
       </Routes>
 
       {/* Footer stays at the bottom */}
       <Footer />
     </BrowserRouter>
   );
-}
+};
 
 export default App;

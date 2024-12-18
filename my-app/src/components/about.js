@@ -6,12 +6,13 @@ function About() {
   return (
     <Container className='about'>
       {/* Navigation link */}
+      <div className='link-slide'>
       <ul className='d-flex' style={{listStyle:'none'}}>
         <li > <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>Home</Link></li>
         <span>/</span>
         <li> <Link to="/about" style={{ textDecoration: 'none', color: 'inherit' }}>About</Link></li>
       </ul>
-      
+      </div>
       <Row>
         {/* Image Column */}
         <Col md={6}> {/* You can specify a column size for responsiveness */}
