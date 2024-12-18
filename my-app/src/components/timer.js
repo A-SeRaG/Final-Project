@@ -22,7 +22,7 @@ const Timer = () => {
             minutes = 59;
             if (hours > 0) hours -= 1;
             else {
-              hours = 23;
+              hours = 0;
               if (days > 0) days -= 1;
             }
           }

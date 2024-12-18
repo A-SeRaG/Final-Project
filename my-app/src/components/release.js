@@ -1,4 +1,4 @@
-import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/esm/Container';
 import 'swiper/css';
@@ -50,15 +50,55 @@ export default function Release() {
           modules={[Pagination]}
           className="mySwiper"
         >
-          <SwiperSlide> <Card >
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
               <Card.Body >
               <Image src=" " fluid />;
               <Card.Title></Card.Title>
-      
+              <Button   id='btn' variant="primary">add to cart</Button>
               </Card.Body>
             </Card>
              </SwiperSlide>
-          <SwiperSlide> <Card >
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
+              <Card.Body >
+              <Image src=" " fluid />;
+              <Card.Title></Card.Title>
+              <Button   id='btn' variant="primary">add to cart</Button>
+              </Card.Body>
+            </Card>
+            </SwiperSlide>
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
+              <Card.Body >
+              <Image src=" " fluid />;
+              <Card.Title></Card.Title>
+              <Button   id='btn' variant="primary">add to cart</Button>
+              </Card.Body>
+            </Card>
+            </SwiperSlide>
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
+              <Card.Body >
+              <Image src=" " fluid />;
+              <Card.Title></Card.Title>
+              <Button   id='btn' variant="primary">add to cart</Button>
+              </Card.Body>
+            </Card>
+            </SwiperSlide>
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
+              <Card.Body >
+              <Image src=" " fluid />;
+              <Card.Title></Card.Title>
+              <Button   id='btn' variant="primary">add to cart</Button>
+              </Card.Body>
+            </Card>
+            </SwiperSlide>
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
+              <Card.Body >
+              <Image src=" " fluid />;
+              <Card.Title></Card.Title>
+              <Button   id='btn' variant="primary">add to cart</Button>
+              </Card.Body>
+            </Card>
+            </SwiperSlide>
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
               <Card.Body >
               <Image src=" " fluid />;
               <Card.Title></Card.Title>
@@ -66,59 +106,19 @@ export default function Release() {
               </Card.Body>
             </Card>
             </SwiperSlide>
-          <SwiperSlide> <Card >
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
               <Card.Body >
               <Image src=" " fluid />;
               <Card.Title></Card.Title>
-      
+              <Button   id='btn' variant="primary">add to cart</Button>
               </Card.Body>
             </Card>
             </SwiperSlide>
-          <SwiperSlide> <Card >
+          <SwiperSlide> <Card id='card' style={{ width: '18rem' }}>
               <Card.Body >
               <Image src=" " fluid />;
               <Card.Title></Card.Title>
-      
-              </Card.Body>
-            </Card>
-            </SwiperSlide>
-          <SwiperSlide> <Card >
-              <Card.Body >
-              <Image src=" " fluid />;
-              <Card.Title></Card.Title>
-      
-              </Card.Body>
-            </Card>
-            </SwiperSlide>
-          <SwiperSlide> <Card >
-              <Card.Body >
-              <Image src=" " fluid />;
-              <Card.Title></Card.Title>
-      
-              </Card.Body>
-            </Card>
-            </SwiperSlide>
-          <SwiperSlide> <Card >
-              <Card.Body >
-              <Image src=" " fluid />;
-              <Card.Title></Card.Title>
-      
-              </Card.Body>
-            </Card>
-            </SwiperSlide>
-          <SwiperSlide> <Card >
-              <Card.Body >
-              <Image src=" " fluid />;
-              <Card.Title></Card.Title>
-      
-              </Card.Body>
-            </Card>
-            </SwiperSlide>
-          <SwiperSlide> <Card >
-              <Card.Body >
-              <Image src=" " fluid />;
-              <Card.Title></Card.Title>
-      
+              <Button   id='btn' variant="primary">add to cart</Button>
               </Card.Body>
             </Card>
             </SwiperSlide>
