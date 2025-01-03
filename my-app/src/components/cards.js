@@ -4,6 +4,8 @@ import Container from 'react-bootstrap/esm/Container';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
+
+
 export default function Basicard() {
   return (
     <Container className="parent-card">
@@ -42,74 +44,6 @@ export default function Basicard() {
           </Card>
         </SwiperSlide>
 
-        {/* Slide 2 */}
-        <SwiperSlide>
-        <Card id='card' style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-               
-              </Card.Text>
-              <Button   id='btn' variant="primary">add to cart</Button>
-            </Card.Body>
-          </Card>
-        </SwiperSlide>
-
-        {/* Slide 3 */}
-        <SwiperSlide>
-        <Card id='card' style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </Card.Text>
-              <Button   id='btn' variant="primary">add to cart</Button>
-            </Card.Body>
-          </Card>
-        </SwiperSlide>
-
-        {/* Slide 4 */}
-        <SwiperSlide>
-        <Card id='card' style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </Card.Text>
-              <Button   id='btn' variant="primary">add to cart</Button>
-            </Card.Body>
-          </Card>
-        </SwiperSlide>
-
-        {/* Slide 5 */}
-        <SwiperSlide>
-        <Card id='card' style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </Card.Text>
-              <Button   id='btn' variant="primary">add to cart</Button>
-            </Card.Body>
-          </Card>
-        </SwiperSlide> 
-        {/* Slide 6 */}
-        <SwiperSlide>
-          <Card id='card' style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" /> 
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </Card.Text>
-              <Button   id='btn' variant="primary">add to cart</Button>
-            </Card.Body>
-          </Card>
-        </SwiperSlide>
       </Swiper>
     <span className='ending'></span>
     </Container>

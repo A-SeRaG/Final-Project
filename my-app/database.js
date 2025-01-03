@@ -7,7 +7,7 @@ const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3306;
 const user = process.env.USER || 'root';
 const password = process.env.PASSWORD || 'root';
-const database = process.env.DATABASE || 'Shop';
+const database = process.env.DATABASE || 'Fashop';
 
 // connecting to the database
 const connection = await mysql.createConnection({
