@@ -1,57 +1,44 @@
 import './App.css';
-import NavbarScroll from "./components/navbar.js";
-import Swiperparent from './components/swiper.js';
-import Timer from './components/timer.js';
-import Basicard from './components/cards.js';
-import CategoryBasic from './components/category.js';
-import ArrivalBasic from './components/arrival.js';
-import Release from './components/release.js';
-import Footer from './components/footer.js';
-import About from './components/about.js';
+import HomePage from './pages/homepage.js';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Erormessage from './components/eror.js';
-// import React, { useState } from 'react';
-import Contact from './components/contact.js';
-import Useracount from './components/useraccount.js';
-
-const HomePage = () => {
-  return (
-    <div>
-      <Swiperparent />
-      <Timer />
-      <Basicard />
-      <CategoryBasic />
-      <ArrivalBasic />
-      <Release />
-    </div>
-  );
-};
-
-
-
+import Erorpage from './pages/Erorpage.js';
+import Useracount from './pages/useraccountpage.js';
+import Fullporductspage from './pages/fullprductpage.js';
+import Aboutpage from './pages/aboutpage.js';
+import Contactpage from './pages/contactpage.js';
+import Womenpage from './pages/womenpage.js';
+import Menpage from './pages/menpage.js';
+import Childrenpage from './pages/childernpage.js';
+import Shoesbagspage from './pages/bagsclothes.js';
+import Userprofile from './components/user.js';
 const App = () => {
   return (
-    <BrowserRouter>
-      {/* Navbar stays on top for all routes */}
-      <NavbarScroll />
-
+    <BrowserRouter>  
       <Routes>
         {/* Define routes for each page/component */}
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<Aboutpage />} />
         
         {/* Home route with all components combined */}
         <Route path="/home" element={<HomePage />} />
         
         {/* Default Route (home or main page) */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/user/:activepage" element={<Useracount />} />
-     
-        <Route path= "/*" element={<Erormessage />} />
+        <Route path="/contact" element={<Contactpage />} />
+        <Route path= "/*" element= {<Erorpage  />} />
+        <Route path='/Fullproducts' element={<Fullporductspage/>}/>
+        <Route path='/womenpage' element={<Womenpage/>}/>
+        <Route path='/menpage' element={<Menpage/>}/>
+        <Route path='/childernpage' element={< Childrenpage/>}/>
+        <Route path='/shoesbags' element={<Shoesbagspage/>}/>
+        <Route path='/profile' element={<Userprofile/>}/>
+
+        <Route path="/useraccount" element={<Useracount />} exact />
       </Routes>
+    
 
       {/* Footer stays at the bottom */}
-      <Footer />
+
     </BrowserRouter>
   );
 };

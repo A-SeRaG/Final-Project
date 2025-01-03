@@ -208,7 +208,7 @@ margin-top: var(--main-margin-top);
 .arrival{
   margin-top: var(--main-margin-top);
   }
-  /* start .release component */
+  /* start .fullproducts component */
   .release{
     margin-top: var(--main-margin-top);
     margin-bottom: var(--main-margin-top);
@@ -297,4 +297,9 @@ margin-top: var(--main-margin-top);
   position: absolute;
   left: 5%;
   top: 10%;
+  }
+/* start full product page */
+.fullproduct{
+  margin-top: 80px ;
+  margin-bottom: var(--main-margin-top);
   }

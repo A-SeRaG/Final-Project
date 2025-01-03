@@ -1,11 +1,8 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+
 import Container from 'react-bootstrap/esm/Container';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-
-
-
+import Cardcomponent from './card';
 export default function Basicard() {
   return (
     <Container className="parent-card">
@@ -32,17 +29,55 @@ export default function Basicard() {
       >
         {/* Slide 1 */}
         <SwiperSlide>
-        <Card id='card' style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-              </Card.Text>
-              <Button   id='btn' variant="primary">add to cart</Button>
-            </Card.Body>
-          </Card>
-        </SwiperSlide>
+  <Cardcomponent 
+    ImageSrc="path_to_your_image.jpg" 
+    title="Product Name"
+  />
+</SwiperSlide>
+
+
+        {/* Slide 2 */}
+        <SwiperSlide>
+  <Cardcomponent 
+    ImageSrc="path_to_your_image.jpg" 
+    title="Product Name"
+  />
+</SwiperSlide>
+
+
+        {/* Slide 3 */}
+        <SwiperSlide>
+  <Cardcomponent 
+    ImageSrc="path_to_your_image.jpg" 
+    title="Product Name"
+  />
+</SwiperSlide>
+
+
+        {/* Slide 4 */}
+        <SwiperSlide>
+  <Cardcomponent 
+    ImageSrc="path_to_your_image.jpg" 
+    title="Product Name"
+  />
+</SwiperSlide>
+
+
+        {/* Slide 5 */}
+        <SwiperSlide>
+  <Cardcomponent 
+    ImageSrc="path_to_your_image.jpg" 
+    title="Product Name"
+  />
+</SwiperSlide>
+ 
+        {/* Slide 6 */}
+        <SwiperSlide>
+  <Cardcomponent 
+    ImageSrc="path_to_your_image.jpg" 
+    title="Product Name"
+  />
+</SwiperSlide>
 
       </Swiper>
     <span className='ending'></span>
