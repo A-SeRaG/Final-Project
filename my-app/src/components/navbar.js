@@ -26,13 +26,13 @@ const NavbarScroll = () => {
             <Nav.Link id='nav-link' href="/Contact">Contact</Nav.Link>
             <Nav.Link id='nav-link' href="/Sign-up">Sign-up</Nav.Link>
             <NavDropdown title="Exclusive" id="navbarScrollingDropdown">
-              <NavDropdown.Item id='nav-link-item' href="#action">Men`s fashion</NavDropdown.Item>
+              <NavDropdown.Item id='nav-link-item' href="/menpage">Men`s fashion</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item id='nav-link-item' href="#action4">women`s fashoin</NavDropdown.Item>
+              <NavDropdown.Item id='nav-link-item' href="/womenpage">women`s fashoin</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item id='nav-link-item' href="#action5">shoes & bags</NavDropdown.Item>
+              <NavDropdown.Item id='nav-link-item' href="/shoesbags">shoes & bags</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item id='nav-link-item' href="#action5">childern clothes</NavDropdown.Item>
+              <NavDropdown.Item id='nav-link-item' href="/childernpage">childern clothes</NavDropdown.Item>
             </NavDropdown>
 
           </Nav>
@@ -54,9 +54,6 @@ const NavbarScroll = () => {
             </Nav.Link>
             <Nav.Link href="#" className="nav-i m-2">
             <FontAwesomeIcon icon="fa-regular fa-heart" />
-            </Nav.Link>
-            <Nav.Link href="/user" className="nav-i m-2">
-            <FontAwesomeIcon icon="fa-solid fa-user" />
             </Nav.Link>
         </Navbar.Collapse>
       </Container>

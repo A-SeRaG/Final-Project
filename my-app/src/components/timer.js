@@ -1,29 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Container from 'react-bootstrap/Container';
+
 const Timer = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 38,
-    hours: 1,
-    minutes: 27,
-    seconds: 55,
+    hours: 0,
+    minutes: 0,
+    seconds: 27,
   });
 
-  // Logic to update the timer every second (optional)
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft((prevTime) => {
         let { days, hours, minutes, seconds } = prevTime;
 
-        if (seconds > 0) seconds -= 1;
-        else {
+        // Update seconds
+        if (seconds > 0) {
+          seconds -= 1;
+        } else {
           seconds = 59;
-          if (minutes > 0) minutes -= 1;
-          else {
+          // Update minutes
+          if (minutes > 0) {
+            minutes -= 1;
+          } else {
             minutes = 59;
-            if (hours > 0) hours -= 1;
-            else {
-              hours = 0;
-              if (days > 0) days -= 1;
+            // Update hours
+            if (hours > 0) {
+              hours -= 1;
+            } else {
+              hours = 23;
+              // Update days
+              if (days > 0) {
+                days -= 1;
+              }
             }
           }
         }
@@ -32,11 +41,12 @@ const Timer = () => {
       });
     }, 1000);
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
+    // Cleanup interval on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <Container className="sales-section"  >
+    <Container className="sales-section">
       <div className="parent-timer">
         <div className="timer-container">
           <h1>All Products are 50% off now!</h1>
@@ -64,7 +74,7 @@ const Timer = () => {
           </div>
         </div>
       </div>
-      </Container>
+    </Container>
   );
 };
 

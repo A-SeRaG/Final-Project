@@ -16,10 +16,11 @@ const Contact = () => {
   return (
     <Container className='contact'>
       {/* Navigation link */}
-    <div className='link-slide'> <ul className='d-flex ' style={{listStyle:'none'}}>
+      {/* Navigation link */}
+      <div className='link-slide'> <ul className='d-flex ' style={{listStyle:'none'}}>
         <li > <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>Home</Link></li>
         <span>/</span>
-        <li> <Link to="/about" style={{ textDecoration: 'none', color: 'inherit' }}>Contact</Link></li>
+        <li> <Link to="/contact" style={{ textDecoration: 'none', color: 'inherit' }}>Contact</Link></li>
       </ul>
       </div> 
       
