@@ -1,15 +1,12 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
 import { sequelize } from './models/index.js';
-
 import productRoutes from './routes/product.js';
 import userRoutes from './routes/user.js';
 import orderRoutes from './routes/order.js';
 import orderItemRoutes from './routes/order_item.js';
 
 const app = express();
-
 
 app.use(bodyParser.json());
 
