@@ -128,8 +128,9 @@
           </Swiper>
          <p id='botn'>
           
+  <Link to="/Fullproducts"  style={{textDecoration :'none'}}> 
   <Button  style={{ backgroundColor:' var(--main-color)'}}variant="outline-secondary "className='me-3' >View All</Button>
-  <Link to="/Fullproducts"  style={{textDecoration :'none'}}> <FontAwesomeIcon icon="fa-solid fa-arrow-right" style={{fontSize:'20px' , color:'black'}} /></Link> 
+  </Link> 
   </p>
   
         

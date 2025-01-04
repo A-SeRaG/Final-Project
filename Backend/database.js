@@ -6,8 +6,8 @@ import 'dotenv/config'
 const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3306;
 const user = process.env.USER || 'root';
-const password = process.env.PASSWORD || '@dmin909Mysql';
-const database = process.env.DATABASE || 'fashop';
+const password = process.env.PASSWORD || 'root';
+const database = process.env.DATABASE || 'Shop';
 
 // connecting to the database
 const connection = await mysql.createConnection({
