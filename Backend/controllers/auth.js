@@ -39,12 +39,22 @@ const authController = {
 		try {
 			const { email, password } = req.body;
 
+			if (!email) {
+				throw new WebError('Please enter an Email', 400);
+			}
+
+			if (!password) {
+				throw new WebError('Please enter a password', 400);
+			}
+
 			const user = await User.findOne({ where: { email } });
+
 			if (!user) {
 				throw new WebError('Email not found', 401);
 			}
 
 			const isEqual = await bcrypt.compare(password, user.password);
+
 			if (!isEqual) {
 				throw new WebError('Wrong password', 401);
 			}
