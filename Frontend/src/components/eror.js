@@ -15,7 +15,7 @@ return(
 <h1 style={{fontSize:'100px'}}>404 Not Found</h1>
 <p>your visited page not found. You may go home page.</p>
 <Link to="/home">
-<Button style={{backgroundColor:'var(--main-color)' ,width:'20%'}}>Go home</Button>
+<Button style={{backgroundColor:'var(--second-color)' ,width:'20%'}}>Go home</Button>
 </Link>
 </div>
 </Container>

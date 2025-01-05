@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 
-
 const Timer = () => {
-  // Initialize the timer state for count-up (start from 0)
+  // Initialize the timer state for count-down
   const [timeElapsed, setTimeElapsed] = useState({
     days: 14,
     hours: 23,
@@ -12,28 +11,34 @@ const Timer = () => {
   });
 
   useEffect(() => {
-    // Set interval to increment time every second
+    // Set interval to decrement time every second
     const interval = setInterval(() => {
       setTimeElapsed((prevTime) => {
         let { days, hours, minutes, seconds } = prevTime;
 
-        // Increment seconds
-        if (seconds < 59) {
+        // Decrement seconds
+        if (seconds > 0) {
           seconds -= 1;
         } else {
-          seconds = 0;
-          // Increment minutes
-          if (minutes < 59) {
+          seconds = 59;
+         
+          // Decrement minutes
+          if (minutes > 0) {
             minutes -= 1;
           } else {
-            minutes = 0;
-            // Increment hours
-            if (hours < 23) {
+            minutes = 59;
+            // Decrement hours
+            if (hours > 0) {
               hours -= 1;
             } else {
-              hours = 0;
-              // Increment days
-              days -= 1;
+              hours = 23;
+              // Decrement days
+              if (days > 0) {
+                days -= 1;
+              } else {
+                // If timer reaches 0, clear the interval
+                clearInterval(interval);
+              }
             }
           }
         }
