@@ -1,305 +1,303 @@
 :root{
---main-color:rgb(117, 34, 73);
---main-margin-top:150px;
-}
-/* component */
-.ending::after{
-  content: '';
-  position: absolute;
-  width:80%;
-   background-color:gainsboro;
-   height: 1px;
-   left: 50%;
-   transform: translateX(-50%);
-   margin-top: 70px;
-   margin-bottom: 20px;
-}
-.bordy {
-  font-size: 15px;
-  
-  
+  --main-color:linear-gradient(to right, #AF286E, #EFB258);
+  --first-color: #EFB258;
+  --second-color: #AF286E;
+  --main-margin-top:150px;
   }
-  .bordy::before{
-    
-    content: "";
-    display: inline-block;
-    height: 20px;
-    border-left: var(--main-color) solid 15px;
-    margin-right: 1px;
-  }
-
- /* navbar */
-.nav-i svg  {
-  color: #000;
-font-size: 20px;
-padding-left: 10px;
-}
-.nav-i svg:hover{
-color: var(--main-color);
-}
-#logo svg{
-color:var(--main-color);
-}
-.logo{
-font-size: 25px;
-font-weight: bold;
-}
-#logo:hover{
-letter-spacing: 2.5px;
-}
-#nav-link:hover{
-color: var(--main-color);
-}
-#nav-link-item:hover{
-background-color: var(--main-color);
-color: #fff;
-}
-
-
-
-
-/* start swiper */  
-
-
-  
-  .parent-swiper .swiper {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .parent-swiper.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-  
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .parent-swiper .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .parent-swiper .swiper-pagination-bullet {
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    font-size: 12px;
-    color: #000;
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.2);
-  }
-  
-  .parent-swiper .swiper-pagination-bullet-active {
-    color: #fff;
-    background: var(--main-color);
-  }
-
-  /* timer */
-  
-  .sales-section {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .timer-container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .timer {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .time-block {
-    text-align: center;
-  }
-  
-  .time-block span {
-    font-size: 36px;
-    font-weight: bold;
-  }
-
- 
-
-.time-block span::before {
-  content: "";
-  display: inline-block;
-  height: 30px;
-  border-left: #000 solid 1px;
-  margin-right: 5px;
-}
-
-
-.time-block #days::before {
-  display: none; 
-}
-  
-
-  
-
-
-  .time-block p {
-    margin: 0;
-    font-size: 14px;
-  }
-  
-
-
-
-/* start card */
-.parent-card  {
-  margin-top: 80px;
-  
-  }
-  .parent-card h2{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 35px;
-  }
-  #btn{
-  display: none;
-  background-color: black;
-  font-size: 15px;
-  width: 100%;
-  }
-  #card:hover #btn{
-    display:inline-block;
-  }
-
-
-
-
-/* Adjust slide height based on screen size */
-@media (max-width: 768px) {
-  .parent-card .swiper {
-    width: 100%;
-    height: auto; /* Adjust height to content */
-  }
-
-  .parent-card .swiper-slide {
-    height: 250px; /* Optional: Set height for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .parent-card .swiper {
-    width: 100%;
-    height: auto; /* Adjust height to content */
-  }
-
-  .parent-card .swiper-slide {
-    height: 200px; /* Optional: Set height for very small screens */
-  }
-}
-/* start category */
-.category{
-margin-top: var(--main-margin-top);
-}
-/* start arrival */
-.arrival{
-  margin-top: var(--main-margin-top);
-  }
-  /* start .fullproducts component */
-  .release{
-    margin-top: var(--main-margin-top);
-    margin-bottom: var(--main-margin-top);
-   
-    }
-  #botn{
+  /* component */
+  .ending::after{
+    content: '';
     position: absolute;
+    width:80%;
+     background-color:gainsboro;
+     height: 1px;
      left: 50%;
      transform: translateX(-50%);
-     margin-top: 30px;
+     margin-top: 70px;
      margin-bottom: 20px;
+  }
+  .bordy {
+    font-size: 15px;
+    
     
     }
+    .bordy::before{
+      
+      content: "";
+      display: inline-block;
+      height: 20px;
+      border-left:var(--second-color) solid 15px;
+      
+      margin-right: 1px;
+    }
   
-  .release .swiper {
-    width: 100%;
-    height: 100%;
+   /* navbar */
+  .nav-i svg  {
+    color: #000;
+  font-size: 20px;
+  padding-left: 10px;
+  }
+  .nav-i svg:hover{
+  color: var(--second-color);
   }
   
-  .release .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-  
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  #nav-link:hover{
+  color: var(--main-color);
+  }
+  #nav-link-item:hover{
+  background-color: var(--second-color);
+  color: #fff;
   }
   
-  .release .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
- 
+  
+  
+  
+  /* start swiper */  
+  
   
     
-  /* start about */
-  .about{
-  margin-top: var(--main-margin-top );
-  margin-bottom: var(--main-margin-top);
+    .parent-swiper .swiper {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .parent-swiper.swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+    
+      /* Center slide text vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .parent-swiper .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .parent-swiper .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color: #000;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.2);
+    }
+    
+    .parent-swiper .swiper-pagination-bullet-active {
+      color: #fff;
+      background: var(--main-color);
+    }
+  
+    /* timer */
+    
+    .sales-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .timer-container h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .time-block {
+      text-align: center;
+    }
+    
+    .time-block span {
+      font-size: 36px;
+      font-weight: bold;
+    }
+  
+   
+  
+  .time-block span::before {
+    content: "";
+    display: inline-block;
+    height: 30px;
+    border-left: #000 solid 1px;
+    margin-right: 5px;
   }
-  /* start contact */
-  .sperate::after{
-      content: '';
+  
+  
+  .time-block #days::before {
+    display: none; 
+  }
+    
+  
+    
+  
+  
+    .time-block p {
+      margin: 0;
+      font-size: 14px;
+    }
+    
+  
+  
+  
+  /* start card */
+  .parent-card  {
+    margin-top: 80px;
+    
+    }
+    .parent-card h2{
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 35px;
+    }
+    #btn{
+    display: none;
+    background-color: black;
+    font-size: 15px;
+    width: 100%;
+    }
+    #card:hover #btn{
+      display:inline-block;
+    }
+  
+  
+  
+  
+  /* Adjust slide height based on screen size */
+  @media (max-width: 768px) {
+    .parent-card .swiper {
+      width: 100%;
+      height: auto; /* Adjust height to content */
+    }
+  
+    .parent-card .swiper-slide {
+      height: 250px; /* Optional: Set height for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .parent-card .swiper {
+      width: 100%;
+      height: auto; /* Adjust height to content */
+    }
+  
+    .parent-card .swiper-slide {
+      height: 200px; /* Optional: Set height for very small screens */
+    }
+  }
+  /* start category */
+  .category{
+  margin-top: var(--main-margin-top);
+  }
+  /* start arrival */
+  .arrival{
+    margin-top: var(--main-margin-top);
+    }
+    /* start .fullproducts component */
+    .release{
+      margin-top: var(--main-margin-top);
+      margin-bottom: var(--main-margin-top);
+     
+      }
+    #botn{
       position: absolute;
-      width:20%;
-       background-color:rgb(10, 10, 10);
-       height: 1px;
-       left:15%;
+       left: 50%;
        transform: translateX(-50%);
-       
+       margin-top: 30px;
+       margin-bottom: 20px;
+      
+      }
+    
+    .release .swiper {
+      width: 100%;
+      height: 100%;
     }
-    .contact{
+    
+    .release .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+    
+      /* Center slide text vertically */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .release .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+   
+    
+      
+    /* start about */
+    .about{
+    margin-top: var(--main-margin-top );
+    margin-bottom: var(--main-margin-top);
+    }
+    /* start contact */
+    .sperate::after{
+        content: '';
+        position: absolute;
+        width:20%;
+         background-color:rgb(10, 10, 10);
+         height: 1px;
+         left:15%;
+         transform: translateX(-50%);
+         
+      }
+      .contact{
+      margin-top: 80px ;
+      margin-bottom: var(--main-margin-top);
+      }
+      .text1 {
+      display: grid;
+      grid-template-columns: auto ;
+      gap: 8px;
+      margin-bottom: 30px;
+      }
+      .text1 span , .text2  span {
+      font-size: 15px;
+  
+      }
+     .text2{
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: auto ;
+      gap: 8px;
+      }
+      .contact svg {
+        border-radius: 50%;          /* Makes the SVG circular */
+        background-color:var(--main-color);   /* Set background color (e.g., blue) */
+        color: white;              /* Set the color of SVG elements like path or text */
+        width:30px;              
+        height: 25px;   
+                
+                    /* Ensure it's treated as a block element */
+      }
+    .link-slide{
+    position: absolute;
+    left: 5%;
+    top: 10%;
+    }
+  /* start full product page */
+  .fullproduct{
     margin-top: 80px ;
     margin-bottom: var(--main-margin-top);
     }
-    .text1 {
-    display: grid;
-    grid-template-columns: auto ;
-    gap: 8px;
-    margin-bottom: 30px;
+    .profile{
+      margin-top: 80px ;
+      margin-bottom: var(--main-margin-top);
     }
-    .text1 span , .text2  span {
-    font-size: 15px;
-
-    }
-   .text2{
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: auto ;
-    gap: 8px;
-    }
-    .contact svg {
-      border-radius: 50%;          /* Makes the SVG circular */
-      background-color:var(--main-color);   /* Set background color (e.g., blue) */
-      color: white;              /* Set the color of SVG elements like path or text */
-      width:30px;              
-      height: 25px;   
-              
-                  /* Ensure it's treated as a block element */
-    }
-  .link-slide{
-  position: absolute;
-  left: 5%;
-  top: 10%;
-  }
-/* start full product page */
-.fullproduct{
-  margin-top: 80px ;
-  margin-bottom: var(--main-margin-top);
-  }
