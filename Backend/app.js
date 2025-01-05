@@ -27,7 +27,6 @@ app.use('/api/v1', productRoutes);
 app.use('/api/v1', userRoutes);
 app.use('/api/v1', orderRoutes);
 app.use('/api/v1', orderItemRoutes);
-app.use('/api/v1', orderItemRoutes);
 app.use('/api/v1', authRoutes);
 
 // error handling
