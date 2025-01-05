@@ -9,7 +9,7 @@ const CartPage = () => {
         <div>
             <NavbarScroll />
             <h1 style={{ textAlign: 'center', margin: '15px' }}>Cart Page</h1>
-            <div>
+            <div style={{ textAlign: 'center', margin: '10px' }}>
                 <button onClick={() => setCount(count + 1)}>+</button>
                 <button onClick={() => setCount(count - 1)}>-</button>
                 <label>Order {count} items</label>

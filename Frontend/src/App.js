@@ -13,6 +13,7 @@ import Childrenpage from "./pages/childernpage.js";
 import Shoesbagspage from "./pages/bagsclothes.js";
 import UserProfilepage from "./pages/userprofilepage.js";
 import Loginpage from "./pages/loginpage.js";
+import CartPage from "./pages/cartpage.js";
 
 const App = () => {
   return (
@@ -35,8 +36,8 @@ const App = () => {
         <Route path="/shoesbags" element={<Shoesbagspage />} />
         <Route path="/profile" element={<UserProfilepage />} />
         <Route path="/sign-up" element={<Loginpage />} />
+        <Route path='/cartpage' element={<CartPage/>}/>
         <Route path="/useraccount" element={<Useracount />} exact />
-        {/* <Route path='/cart' element={<CartPage/>}/> */}
 
       </Routes>
 

@@ -68,9 +68,9 @@ const NavbarScroll = () => {
             </Button>
           </Form>
 
-          <Nav.Link href="#" className="nav-i m-2">
+          <Nav.Link href="/cartpage" className="nav-i m-2">
             <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-          </Nav.Link>
+          </Nav.Link >
         </Navbar.Collapse>
       </Container>
     </Navbar>
