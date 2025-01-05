@@ -2,12 +2,14 @@ import express from 'express';
 import { body } from 'express-validator';
 
 import productController from '../controllers/product.js';
+import { isAuth, isAdmin } from '../middleware/is-auth.js';
 
 const router = express.Router();
 
 router.route('/products')
   .get(productController.getProducts)
   .post(
+    isAdmin,
     [
       body('name')
         .trim()
@@ -41,7 +43,7 @@ router.route('/products')
 
 router.route('/products/:id')
   .get(productController.getProductById)
-  .patch(productController.updateProductById)
-  .delete(productController.deleteProductById);
+  .patch(isAdmin, productController.updateProductById)
+  .delete(isAdmin, productController.deleteProductById);
 
 export default router;

@@ -17,4 +17,7 @@ User.hasMany(Order, {
 Order.belongsToMany(Product, { through: { model: OrderItem, unique: false }, foreignKey: 'orderId' });
 Product.belongsToMany(Order, { through: { model: OrderItem, unique: false }, foreignKey: 'productId' });
 
+OrderItem.belongsTo(Product, { foreignKey: 'productId' });
+Product.hasMany(OrderItem, { foreignKey: 'productId' });
+
 export { Product, User, Order, OrderItem, sequelize };

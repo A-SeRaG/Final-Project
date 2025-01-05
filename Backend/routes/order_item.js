@@ -2,18 +2,15 @@ import express from 'express';
 import { body } from 'express-validator';
 
 import orderItemController from '../controllers/order_item.js';
+import { isAuth, isAdmin } from '../middleware/is-auth.js';
 
 const router = express.Router();
 
 router.route('/order-items')
+  .all(isAuth)
   .get(orderItemController.getOrderItems)
   .post(
     [
-      body('orderId')
-        .trim()
-        .notEmpty()
-        .isInt()
-        .withMessage('Not a valid order id'),
       body('productId')
         .trim()
         .notEmpty()
@@ -24,15 +21,11 @@ router.route('/order-items')
         .notEmpty()
         .isFloat()
         .withMessage('Not a valid quantity'),
-      body('price')
-        .trim()
-        .notEmpty()
-        .isFloat()
-        .withMessage('Not a valid price'),
     ],
     orderItemController.postOrderItem);
 
-router.route('/order-items/:id',)
+router.route('/order-items/:id')
+  .all(isAuth)
   .get(orderItemController.getOrderItemById)
   .patch(orderItemController.updateOrderItemById)
   .delete(orderItemController.deleteOrderItemById);

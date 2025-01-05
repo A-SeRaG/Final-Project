@@ -6,132 +6,167 @@ import WebError from '../utils/webError.js';
 import extractMessage from '../utils/extractMessage.js';
 
 const orderItemController = {
-	getOrderItems(req, res, next) {
-		return OrderItem.findAll().then((orderItems) => {
-			return res.status(200).json({
-				orderItems: orderItems
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
+	async getOrderItems(req, res, next) {
+		try {
+			const userId = req.userId;
+			let orderItems
+			if (req.role === 'admin') {
+				orderItems = await OrderItem.findAll();
+			} else {
+				const order = await Order.findOne({ where: { userId, status: 'Pending' } });
+				if (order) {
+					orderItems = await OrderItem.findAll({ where: { orderId: order.id } });
+				} else {
+					orderItems = [];
+				}
 			}
+			res.status(200).json({ orderItems });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
 			next(err);
-		});
+		}
 	},
 
-	getOrderItemById(req, res, next) {
-		const id = req.params.id;
-		if (!id || !Number(id)) {
-			throw new WebError('Not a valid Id', 400);
-		}
-		return OrderItem.findOne({ where: { id: id } }).then((orderItem) => {
+	async getOrderItemById(req, res, next) {
+		try {
+			const id = req.params.id;
+			const userId = req.userId;
+			if (!id || isNaN(Number(id))) {
+				throw new WebError('Not a valid Id', 400);
+			}
+
+			const orderItem = await OrderItem.findOne({ where: { id } });
+
 			if (!orderItem) {
 				throw new WebError('Order item not found', 404);
 			}
-			return res.status(200).json({
-				orderItem: orderItem
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
+
+			const order = await Order.findOne({ where: { id: orderItem.orderId } });
+
+
+			if (req.role === 'customer' && order.userId !== userId) {
+				throw new WebError('Not authorized.', 403);
 			}
+
+			res.status(200).json({ orderItem });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
 			next(err);
-		});
+		}
 	},
 
-	postOrderItem(req, res, next) {
-		const result = validationResult(req);
+	async postOrderItem(req, res, next) {
+		try {
+			const result = validationResult(req);
+			if (!result.isEmpty()) {
+				return res.status(400).json({ error: extractMessage(result.array()) });
+			}
 
-		if (!result.isEmpty()) {
-			return res.status(400).json({ error: extractMessage(result.array()) });
-		}
+			const { productId, quantity } = req.body;
+			const userId = req.userId;
 
-		const { orderId, productId, quantity, price } = req.body;
+			let order = await Order.findOne({ where: { userId, status: 'Pending' } });
 
-		return Promise.all([
-			Order.findOne({ where: { id: orderId } }),
-			Product.findOne({ where: { id: productId } })
-		])
-			.then(([order, product]) => {
-				if (!order) {
-					throw new WebError('orderId is not associated with a valid order', 400);
-				}
+			if (!order) {
+				order = await Order.create({ userId, totalPrice: 0, status: 'Pending' });
+			}
 
-				if (!product) {
-					throw new WebError('productId is not associated with a valid product', 400);
-				}
+			const product = await Product.findOne({ where: { id: productId } });
+			if (!product) {
+				throw new WebError('Product not found', 400);
+			}
 
-				return OrderItem.create({
-					orderId: orderId,
-					productId: productId,
-					quantity: quantity,
-					price: price,
-				});
-			})
-			.then((newOrderItem) => {
-				return res.status(201).json({
-					message: 'Order item created successfully',
-					orderItem: newOrderItem
-				});
-			})
-			.catch((err) => {
-				if (!err.statusCode) {
-					err.statusCode = 500;
-				}
+			const newOrderItem = await OrderItem.create({ orderId: order.id, productId, quantity });
 
-				next(err);
+			await updatePrice(order);
+
+			res.status(201).json({
+				message: 'Order item added successfully',
+				orderItem: newOrderItem,
 			});
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
+			next(err);
+		}
 	},
 
-	deleteOrderItemById(req, res, next) {
-		const id = req.params.id;
-		if (!id || !Number(id)) {
-			throw new WebError('Not a valid Id', 400);
-		}
-		return OrderItem.destroy({ where: { id: id } }).then((orderItem) => {
+	async deleteOrderItemById(req, res, next) {
+		try {
+			const id = req.params.id;
+			const userId = req.userId;
+
+			if (!id || isNaN(Number(id))) {
+				throw new WebError('Not a valid Id', 400);
+			}
+			const orderItem = await OrderItem.findOne({ where: { id } });
+
 			if (!orderItem) {
 				throw new WebError('Order item not found', 404);
 			}
-			return res.status(200).json({
-				message: 'Order item deleted successfully',
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
+
+			const order = await Order.findOne({ where: { id: orderItem.orderId } });
+
+
+			if (req.role === 'customer' && order.userId !== userId) {
+				throw new WebError('Not authorized.', 403);
 			}
+
+			await orderItem.destroy();
+
+			await updatePrice(order);
+
+			res.status(200).json({ message: 'Order item deleted successfully' });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
 			next(err);
-		});
+		}
 	},
 
-	updateOrderItemById(req, res, next) {
-		const id = req.params.id;
-		if (!id || !Number(id)) {
-			throw new WebError('Not a valid Id', 400);
-		}
-		return OrderItem.findOne({ where: { id: id } }).then((orderItem) => {
+	async updateOrderItemById(req, res, next) {
+		try {
+			const id = req.params.id;
+			const userId = req.userId;
+			if (!id || isNaN(Number(id))) {
+				throw new WebError('Not a valid Id', 400);
+			}
+
+			const orderItem = await OrderItem.findOne({ where: { id } });
+
 			if (!orderItem) {
-				throw new WebError('OrderItem not found', 404);
+				throw new WebError('Order item not found', 404);
 			}
-			orderItem.update(req.body).then((updatedOrderItem) => {
-				if (!updatedOrderItem) {
-					throw new WebError('Error while updating orderItem', 404);
-				}
-				return res.status(200).json({
-					orderItem: updatedOrderItem
-				});
-			}).catch((err) => {
-				if (!err.statusCode) {
-					err.statusCode = 500;
-				}
-				next(err);
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
+			const order = await Order.findOne({ where: { id: orderItem.orderId } });
+
+
+			if (req.role === 'customer' && order.userId !== userId) {
+				throw new WebError('Not authorized.', 403);
 			}
+
+
+			const updatedOrderItem = await orderItem.update(req.body);
+			updatePrice(order);
+
+			res.status(200).json({ orderItem: updatedOrderItem });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
 			next(err);
-		});
+		}
 	},
+};
+
+async function updatePrice(order) {
+	const items = await OrderItem.findAll({
+		where: { orderId: order.id },
+		include: [{
+			model: Product,
+			attributes: ['price'],
+		}]
+	});
+
+	const total = items.reduce((sum, item) => sum + (item.quantity * item.Product.price), 0);
+
+	order.totalPrice = total || 0;
+	await order.save();
 };
 
 export default orderItemController;

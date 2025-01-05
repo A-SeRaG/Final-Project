@@ -5,137 +5,118 @@ import extractMessage from '../utils/extractMessage.js';
 import bcrypt from 'bcryptjs';
 
 const userController = {
-	getUsers(req, res, next) {
-		User.findAll().then((users) => {
-			return res.status(200).json({
-				users: users
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
-			}
+	async getUsers(req, res, next) {
+		try {
+			const users = await User.findAll();
+			res.status(200).json({ users });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
 			next(err);
-		});
+		}
 	},
 
-	getUserById(req, res, next) {
-		const id = req.params.id;
-		if (!id || !Number(id)) {
-			throw new WebError('Not a valid Id', 400);
-		}
-		return User.findOne({ where: { id: id } }).then((user) => {
+	async getUserById(req, res, next) {
+		try {
+			const id = req.params.id;
+			if (!id || isNaN(Number(id))) {
+				throw new WebError('Not a valid Id', 400);
+			}
+
+			const user = await User.findOne({ where: { id } });
 			if (!user) {
 				throw new WebError('User not found', 404);
 			}
-			return res.status(200).json({
-				user: user
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
-			}
+
+			res.status(200).json({ user });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
 			next(err);
-		});
+		}
 	},
-	postUser(req, res, next) {
-		const result = validationResult(req);
-		const roles = ['customer', 'admin'];
 
-		if (!result.isEmpty()) {
-			return res.status(400).json({ error: extractMessage(result.array()) });
-		}
+	async postUser(req, res, next) {
+		try {
+			const result = validationResult(req);
+			if (!result.isEmpty()) {
+				return res.status(400).json({ error: extractMessage(result.array()) });
+			}
 
-		const { name, email, password, role } = req.body;
+			const roles = ['customer', 'admin'];
+			const { name, email, password, role } = req.body;
 
-		if (!roles.includes(role)) {
-			throw new WebError('Not a valid role', 400);
-		}
+			if (!roles.includes(role)) {
+				throw new WebError('Not a valid role', 400);
+			}
 
-		return bcrypt.genSalt(10)
-			.then((salt) => {
-				bcrypt.hash(password, salt)
-					.then((hashedPassword) => {
-						User.create({
-							name: name,
-							email: email,
-							password: hashedPassword,
-							role: role
-						})
-							.then((newUser) => {
-								return res.status(201).json({
-									message: 'User created successfully',
-									user: newUser
-								});
-							})
-							.catch((err) => {
-								if (!err.statusCode) {
-									err.statusCode = 500;
-								}
-								next(err);
-							});
-					})
-					.catch((err) => {
-						if (!err.statusCode) {
-							err.statusCode = 500;
-						}
-						next(err);
-					});
-			})
-			.catch((err) => {
-				if (!err.statusCode) {
-					err.statusCode = 500;
-				}
-				next(err);
+			const salt = await bcrypt.genSalt(10);
+			const hashedPassword = await bcrypt.hash(password, salt);
+
+			const newUser = await User.create({
+				name,
+				email,
+				password: hashedPassword,
+				role,
 			});
+
+			res.status(201).json({
+				message: 'User created successfully',
+				user: newUser,
+			});
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
+			next(err);
+		}
 	},
 
-	deleteUserById(req, res, next) {
-		const id = req.params.id;
-		if (!id || !Number(id)) {
-			throw new WebError('Not a valid Id', 400);
+	async deleteUserById(req, res, next) {
+		try {
+			const id = req.params.id;
+			if (!id || isNaN(Number(id))) {
+				throw new WebError('Not a valid Id', 400);
+			}
+
+			const deletedUser = await User.destroy({ where: { id } });
+			if (!deletedUser) {
+				throw new WebError('User not found', 404);
+			}
+
+			res.status(200).json({ message: 'User deleted successfully' });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
+			next(err);
 		}
-		return User.destroy({ where: { id: id } }).then((user) => {
+	},
+
+	async updateUserById(req, res, next) {
+		try {
+			const id = req.params.id;
+			if (!id || isNaN(Number(id))) {
+				throw new WebError('Not a valid Id', 400);
+			}
+
+			const user = await User.findOne({ where: { id } });
 			if (!user) {
 				throw new WebError('User not found', 404);
 			}
-			return res.status(200).json({
-				message: 'User deleted successfully',
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
+
+			const roles = ['customer', 'admin'];
+
+			if (req.body.role && !roles.includes(req.body.role)) {
+				throw new WebError('Not a valid role', 400);
 			}
+
+			if (req.body.password) {
+				const salt = await bcrypt.genSalt(10);
+				req.body.password = await bcrypt.hash(req.body.password, salt);
+			}
+
+
+			const updatedUser = await user.update(req.body);
+			res.status(200).json({ user: updatedUser });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
 			next(err);
-		});
-	},
-	updateUserById(req, res, next) {
-		const id = req.params.id;
-		if (!id || !Number(id)) {
-			throw new WebError('Not a valid Id', 400);
 		}
-		return User.findOne({ where: { id: id } }).then((user) => {
-			if (!user) {
-				throw new WebError('User not found', 404);
-			}
-			user.update(req.body).then((updatedUser) => {
-				if (!updatedUser) {
-					throw new WebError('Error while updating user', 404);
-				}
-				return res.status(200).json({
-					user: updatedUser
-				});
-			}).catch((err) => {
-				if (!err.statusCode) {
-					err.statusCode = 500;
-				}
-				next(err);
-			});
-		}).catch((err) => {
-			if (!err.statusCode) {
-				err.statusCode = 500;
-			}
-			next(err);
-		});
 	},
 };
 

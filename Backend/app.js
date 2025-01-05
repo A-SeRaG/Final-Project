@@ -7,6 +7,7 @@ import productRoutes from './routes/product.js';
 import userRoutes from './routes/user.js';
 import orderRoutes from './routes/order.js';
 import orderItemRoutes from './routes/order_item.js';
+import authRoutes from './routes/auth.js';
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use('/api/v1', productRoutes);
 app.use('/api/v1', userRoutes);
 app.use('/api/v1', orderRoutes);
 app.use('/api/v1', orderItemRoutes);
+app.use('/api/v1', orderItemRoutes);
+app.use('/api/v1', authRoutes);
 
 // error handling
 app.use((err, req, res, next) => {
