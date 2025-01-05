@@ -6,8 +6,7 @@
   import 'swiper/css/navigation';
   // Import Swiper React components
   import { Swiper, SwiperSlide } from 'swiper/react';
- 
-  import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
   import Cardcomponent from './card';
   // Import Swiper styles
   import 'swiper/css';
@@ -128,8 +127,8 @@
           </Swiper>
          <p id='botn'>
           
-  <Button  style={{ backgroundColor:' var(--main-color)'}}variant="outline-secondary "className='me-3' >View All</Button>
-  <Link to="/Fullproducts"  style={{textDecoration :'none'}}> <FontAwesomeIcon icon="fa-solid fa-arrow-right" style={{fontSize:'20px' , color:'black'}} /></Link> 
+ 
+  <Link to="/Fullproducts"  style={{textDecoration :'none'}}> <Button  style={{ backgroundColor:'var(--second-color)'}}variant="outline-secondary "className='me-3' >View All</Button> </Link> 
   </p>
   
         

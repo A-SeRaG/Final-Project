@@ -21,7 +21,7 @@ const CategoryBasic = () => {
           </Card> 
             </Col>
             <Col xs={5} > 
-            <Card  style={{backgroundColor:'var(--main-color)'}}>
+            <Card  style={{backgroundColor:'var(--second-color)'}}>
             <Card.Body >
               <h3 style={{ fontSize:'20px', }}>Explore our Top categories </h3>
             

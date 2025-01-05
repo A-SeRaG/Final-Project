@@ -11,7 +11,9 @@ import Womenpage from './pages/womenpage.js';
 import Menpage from './pages/menpage.js';
 import Childrenpage from './pages/childernpage.js';
 import Shoesbagspage from './pages/bagsclothes.js';
-import Userprofile from './components/user.js';
+import UserProfilepage from './pages/userprofilepage.js';
+import Loginpage from './pages/loginpage.js';
+ 
 const App = () => {
   return (
     <BrowserRouter>  
@@ -31,8 +33,8 @@ const App = () => {
         <Route path='/menpage' element={<Menpage/>}/>
         <Route path='/childernpage' element={< Childrenpage/>}/>
         <Route path='/shoesbags' element={<Shoesbagspage/>}/>
-        <Route path='/profile' element={<Userprofile/>}/>
-
+        <Route path='/profile' element={<UserProfilepage/>}/>
+        <Route path='/sign-up' element={<Loginpage/>}/>
         <Route path="/useraccount" element={<Useracount />} exact />
       </Routes>
     

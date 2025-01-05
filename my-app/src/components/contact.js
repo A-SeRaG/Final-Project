@@ -76,7 +76,7 @@ const Contact = () => {
           fontSize: '16px', // Font size for visibility
         }}/>
       </Col> 
-        <Button style={{backgroundColor:'var(--main-color)' ,width:'50%'}}>send message</Button>
+        <Button style={{backgroundColor:'var(--second-color)' ,width:'50%'}}>send message</Button>
    </Form>
 </Row>
 </Col>

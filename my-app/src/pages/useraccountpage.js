@@ -13,6 +13,7 @@ import CategoryBasic from '../components/category.js';
 import ArrivalBasic from '../components/arrival.js';
 import Release from '../components/release.js';
 
+import logo from '../images/Logo1.jpg';
 const Useracount = () => {
 
 
@@ -23,7 +24,14 @@ const Useracount = () => {
             <Container fluid>
           
                 <Navbar.Brand href="#" id='logo'>
-                  <FontAwesomeIcon icon="fa-solid fa-bag-shopping" /> FA-SHOP
+
+                 <img
+                               alt=""
+                               src={logo}
+                               width="60"
+                               height="60"
+                              
+                             />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -36,7 +44,7 @@ const Useracount = () => {
                     <Nav.Link id='nav-link' href="/About">About</Nav.Link>
                     <Nav.Link id='nav-link' href="/Contact">Contact</Nav.Link>
 
-              <NavDropdown title="Exclusive" id="navbarScrollingDropdown">
+              <NavDropdown title="Category" id="navbarScrollingDropdown">
               <NavDropdown.Item id='nav-link-item' href="/menpage">Men`s fashion</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item id='nav-link-item' href="/womenpage">women`s fashoin</NavDropdown.Item>
@@ -51,17 +59,14 @@ const Useracount = () => {
                  <Nav.Link href="#" className="nav-i me-2 ">
                     <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
                   </Nav.Link>
-                  <Nav.Link href="#" className="nav-i me-2 ">
-                    <FontAwesomeIcon icon="fa-regular fa-heart" />
-                  </Nav.Link>
+                  
                  
                   <Nav.Link href="" className="nav-i">
                     <FontAwesomeIcon icon="fa-solid fa-user" />
                   </Nav.Link>
                   <NavDropdown className='me-3' id="navbarScrollingDropdown">
                     <NavDropdown.Item id='nav-link-item' href="/profile">Profile</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item id='nav-link-item' href="#action4">Myorders</NavDropdown.Item>
+                    
                     <NavDropdown.Divider />
                     <NavDropdown.Item id='nav-link-item' href="/home">Logout</NavDropdown.Item>
                   </NavDropdown>
@@ -74,9 +79,9 @@ const Useracount = () => {
                       className="me-2"
                       aria-label="Search"
                     />
-                    <Button style={{ backgroundColor: 'var(--main-color)' }}>
-                      <FontAwesomeIcon style={{ color: 'white' }} icon="fa-solid fa-magnifying-glass" />
-                    </Button>
+                  <Button  style={{backgroundColor:' var(--second-color)'}}>
+            <FontAwesomeIcon style={{Color:'white'}} icon="fa-solid fa-magnifying-glass" />
+            </Button>
                   </Form>
                
                 

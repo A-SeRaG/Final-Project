@@ -1,14 +1,24 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import logo from '../images/Logo.jpg';
 export default function Footer() {
+  
   return (
-    <footer style={{ backgroundColor: "#333", color: "#fff", padding: "40px 0" }}>
+    <footer style={{ backgroundColor: "black", color: "#fff", padding: "40px 0" }}>
       <Container>
         <Row>
+       
+
           {/* Column 1: Quick Links */}
           <Col md={3}>
+          <img
+              alt=""
+              src={logo}
+              width="60"
+              height="60"
+             
+            />
             <h5>Quick Links</h5>
             <ul style={{ listStyle: "none", padding: 0 }}>
               <li><a href="/" style={{ color: "#fff", textDecoration: "none" }}>Home</a></li>
@@ -26,7 +36,7 @@ export default function Footer() {
             <Form>
               <Form.Group>
                 <Form.Control type="email" placeholder="Enter your email" style={{ marginBottom: "10px" }} />
-                <Button style={{ backgroundColor:'var(--main-color)'}} variant="primary" type="submit" block>Subscribe</Button>
+                <Button style={{ backgroundColor:'var(--second-color)'}} variant="primary" type="submit" block>Subscribe</Button>
               </Form.Group>
             </Form>
           </Col>
@@ -62,7 +72,8 @@ export default function Footer() {
         {/* Bottom Section: Copyright */}
         <Row>
           <Col className="text-center" style={{ marginTop: "30px" }}>
-            <p>&copy; {new Date().getFullYear()} FA-SHOP. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} FA-SHOP. All rights reserved.</p>
+          
           </Col>
         </Row>
       </Container>
