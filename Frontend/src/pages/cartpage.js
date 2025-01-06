@@ -1,15 +1,6 @@
 import { useNavigate } from "react-router-dom"; // Import for navigation
 import NavbarScroll from "../components/navbar.js";
 import Footer from "../components/footer.js";
-<<<<<<< HEAD
-import { useState } from "react";
-import { Card } from "react-bootstrap";
-import Image from "react-bootstrap/Image";
-
-
-const CartPage = () => {
-  const [count, setCount] = useState(0);
-=======
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -28,11 +19,14 @@ const CartPage = () => {
         return;
       }
 
-      const cartResponse = await axios.get("http://localhost:8080/api/v1/cart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const cartResponse = await axios.get(
+        "http://localhost:8080/api/v1/cart",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const orderItems = cartResponse.data.orderItems || [];
       setCartItems(orderItems);
@@ -47,7 +41,10 @@ const CartPage = () => {
       const productResponses = await Promise.all(
         productPromises.map((promise) =>
           promise.catch((error) => {
-            console.error(`Failed to fetch product with ID ${error.config.url}:`, error);
+            console.error(
+              `Failed to fetch product with ID ${error.config.url}:`,
+              error
+            );
             return null; // Return null for failed requests
           })
         )
@@ -68,7 +65,6 @@ const CartPage = () => {
   useEffect(() => {
     fetchCartItems();
   }, []);
->>>>>>> ed839c27f5efc1291d169e653914c1f31ab93669
 
   const handleQuantityChange = (productId, change) => {
     setCartItems((prevItems) =>
@@ -114,24 +110,6 @@ const CartPage = () => {
       <NavbarScroll />
       <h1 style={{ textAlign: "center", margin: "15px" }}>Cart Page</h1>
       <div style={{ textAlign: "center", margin: "10px" }}>
-<<<<<<< HEAD
-        <button onClick={() => setCount(count + 1)}>+</button>
-        <button onClick={() => setCount(count - 1)}>-</button>
-        <label>Order {count} items</label>
-        <div>
-          <h2>Products</h2>
-
-                    <Card>
-            <Image
-              src="http://localhost:8080/api/v1/upload/home/1736173806378.jpeg"
-              fluid
-            />
-            <Card.Body>
-              <Card.Title>women</Card.Title>
-            </Card.Body>
-          </Card>
-        </div>
-=======
         {products.length > 0 ? (
           <div>
             <h2>Products in Your Cart</h2>
@@ -155,18 +133,38 @@ const CartPage = () => {
                       <img
                         src={`http://localhost:8080/uploads/${product.image}`}
                         alt={product.name}
-                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                        style={{
+                          width: "100px",
+                          height: "100px",
+                          objectFit: "cover",
+                        }}
                       />
-                      <div style={{ flex: 1, marginLeft: "15px", textAlign: "left" }}>
+                      <div
+                        style={{
+                          flex: 1,
+                          marginLeft: "15px",
+                          textAlign: "left",
+                        }}
+                      >
                         <h4>{product.name}</h4>
                         <p>Price: ${product.price}</p>
                       </div>
                       <div>
-                        <button onClick={() => handleQuantityChange(cartItem.productId, -1)}>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(cartItem.productId, -1)
+                          }
+                        >
                           -
                         </button>
-                        <span style={{ margin: "0 10px" }}>{cartItem.quantity}</span>
-                        <button onClick={() => handleQuantityChange(cartItem.productId, 1)}>
+                        <span style={{ margin: "0 10px" }}>
+                          {cartItem.quantity}
+                        </span>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(cartItem.productId, 1)
+                          }
+                        >
                           +
                         </button>
                       </div>
@@ -195,7 +193,6 @@ const CartPage = () => {
         ) : (
           <p>No products in your cart.</p>
         )}
->>>>>>> ed839c27f5efc1291d169e653914c1f31ab93669
       </div>
       <Footer />
     </div>
