@@ -1,6 +1,11 @@
+
+
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import Image from "react-bootstrap/esm/Image";
+import { Link } from 'react-router-dom';
+import Image from "react-bootstrap/Image";
+
+// import Image from "react-bootstrap/esm/Image";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 
@@ -8,7 +13,7 @@ const Cardcomponent = ({ product }) => {
   const navigate = useNavigate(); // Initialize useNavigate for redirection
 
   if (!product) {
-    return <p>No product data available.</p>;
+    return <p>No product data available.</p>; // Handle missing product data
   }
 
   const handleAddToCart = async () => {
@@ -54,17 +59,38 @@ const Cardcomponent = ({ product }) => {
   };
 
   return (
-    <Card id="card" style={{ width: "18rem" }}>
-      <Card.Body>
-        <Image src={product.imageURL || "placeholder.jpg"} fluid />
-        <Card.Title>{product.name || "Unnamed Product"}</Card.Title>
-        <p>Description: {product.description || "No description"}</p>
-        <p>Price: ${product.price || "N/A"}</p>
-        <Button id="btn" variant="primary" onClick={handleAddToCart}>
-          Add to Cart
-        </Button>
-      </Card.Body>
-    </Card>
+    <Link style={{textDecoration: 'none'}} to={`/product/${product.id}`}>
+      <Card id="card" style={{ width: "18rem" }}>
+        <Card.Body>
+          <Image
+            style={{
+              height: '100%',
+              width: '100%',
+              objectFit: 'cover',
+            }}
+            src={product.imageURL || "placeholder.jpg"}  // Default placeholder if image is missing
+            fluid
+          />
+          <Card.Title>{product.name || "Unnamed Product"}</Card.Title>
+          <p>Description: {product.description || "No description available"}</p>
+          <p>Price: ${product.price || "N/A"}</p>
+          <Button id="btn" variant="primary">Add to Cart</Button>
+        </Card.Body>
+      </Card>
+    </Link>
+// =======
+//     <Card id="card" style={{ width: "18rem" }}>
+//       <Card.Body>
+//         <Image src={product.imageURL || "placeholder.jpg"} fluid />
+//         <Card.Title>{product.name || "Unnamed Product"}</Card.Title>
+//         <p>Description: {product.description || "No description"}</p>
+//         <p>Price: ${product.price || "N/A"}</p>
+//         <Button id="btn" variant="primary" onClick={handleAddToCart}>
+//           Add to Cart
+//         </Button>
+//       </Card.Body>
+//     </Card>
+// >>>>>>> 59290eed7bb0386b676c563a82426423b5583776
   );
 };
 

@@ -1,16 +1,18 @@
+import Container from "react-bootstrap/esm/Container";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 
-import Container from 'react-bootstrap/esm/Container';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import Cardcomponent from './card';
 export default function Basicard() {
   return (
     <Container className="parent-card">
-    <span className='bordy'> flash-sales </span>
-    <h2>  Best Selling Products: </h2>
+      <span className="bordy"> flash-sales </span>
+      <h2> Best Selling Products: </h2>
       <Swiper
         watchSlidesProgress={true}
-        slidesPerView={3}  // Default: 3 slides on larger screens
+        slidesPerView={3} // Default: 3 slides on larger screens
         breakpoints={{
           1024: {
             slidesPerView: 3, // For large screens, show 3 slides
@@ -29,59 +31,91 @@ export default function Basicard() {
       >
         {/* Slide 1 */}
         <SwiperSlide>
-  <Cardcomponent 
-    ImageSrc="path_to_your_image.jpg" 
-    title="Product Name"
-  />
-</SwiperSlide>
-
-
+          <Link to="/shoesbags" style={{ textDecoration: "none" }}>
+            <Card>
+              <Image
+                src="http://localhost:8080/uploads/women/1736195318726.jpeg"
+                // src="http://localhost:8080/uploads/home/1736173806378.jpeg"
+                fluid
+              />
+              <Card.Body>
+                <Card.Title>Big Sale on Bags</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </SwiperSlide>
         {/* Slide 2 */}
         <SwiperSlide>
-  <Cardcomponent 
-    ImageSrc="path_to_your_image.jpg" 
-    title="Product Name"
-  />
-</SwiperSlide>
-
-
+          <Link to="/menpage" style={{ textDecoration: "none" }}>
+            <Card>
+              <Image
+                src="http://localhost:8080/uploads/home/1736173817307.jpeg"
+                fluid
+              />
+              <Card.Body>
+                <Card.Title>Flash Sale on Jackets</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </SwiperSlide>
         {/* Slide 3 */}
         <SwiperSlide>
-  <Cardcomponent 
-    ImageSrc="path_to_your_image.jpg" 
-    title="Product Name"
-  />
-</SwiperSlide>
-
-
+          <Link to="/Fullproducts" style={{ textDecoration: "none" }}>
+            <Card>
+              <Image
+                src="http://localhost:8080/uploads/home/1736173825281.jpeg"
+                fluid
+              />
+              <Card.Body>
+                <Card.Title>Weakend Sales.. Harry Up!!</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </SwiperSlide>
         {/* Slide 4 */}
         <SwiperSlide>
-  <Cardcomponent 
-    ImageSrc="path_to_your_image.jpg" 
-    title="Product Name"
-  />
-</SwiperSlide>
-
-
+          <Link to="/menpage" style={{ textDecoration: "none" }}>
+            <Card>
+              <Image
+                src="http://localhost:8080/uploads/home/1736175545235.jpeg"
+                fluid
+              />
+              <Card.Body>
+                <Card.Title>50% Sale on Men wears</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </SwiperSlide>
         {/* Slide 5 */}
         <SwiperSlide>
-  <Cardcomponent 
-    ImageSrc="path_to_your_image.jpg" 
-    title="Product Name"
-  />
-</SwiperSlide>
- 
+          <Link to="/womenpage" style={{ textDecoration: "none" }}>
+            <Card>
+              <Image
+                src="http://localhost:8080/uploads/home/1736174920214.jpeg"
+                fluid
+              />
+              <Card.Body>
+                <Card.Title>Best Selling For Limeted Time</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </SwiperSlide>
         {/* Slide 6 */}
         <SwiperSlide>
-  <Cardcomponent 
-    ImageSrc="path_to_your_image.jpg" 
-    title="Product Name"
-  />
-</SwiperSlide>
-
+          <Link to="/childernpage" style={{ textDecoration: "none" }}>
+            <Card>
+              <Image
+                src="http://localhost:8080/uploads/home/1736174795791.jpeg"
+                fluid
+              />
+              <Card.Body>
+                <Card.Title>Buy Two + 1 FREE</Card.Title>
+              </Card.Body>
+            </Card>
+          </Link>
+        </SwiperSlide>
       </Swiper>
-    <span className='ending'></span>
+      <span className="ending"></span>
     </Container>
-  
   );
 }

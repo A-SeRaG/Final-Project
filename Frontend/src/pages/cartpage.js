@@ -19,11 +19,14 @@ const CartPage = () => {
         return;
       }
 
-      const cartResponse = await axios.get("http://localhost:8080/api/v1/cart", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const cartResponse = await axios.get(
+        "http://localhost:8080/api/v1/cart",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const orderItems = cartResponse.data.orderItems || [];
       setCartItems(orderItems);
@@ -38,7 +41,10 @@ const CartPage = () => {
       const productResponses = await Promise.all(
         productPromises.map((promise) =>
           promise.catch((error) => {
-            console.error(`Failed to fetch product with ID ${error.config.url}:`, error);
+            console.error(
+              `Failed to fetch product with ID ${error.config.url}:`,
+              error
+            );
             return null; // Return null for failed requests
           })
         )
@@ -127,18 +133,38 @@ const CartPage = () => {
                       <img
                         src={`http://localhost:8080/uploads/${product.image}`}
                         alt={product.name}
-                        style={{ width: "100px", height: "100px", objectFit: "cover" }}
+                        style={{
+                          width: "100px",
+                          height: "100px",
+                          objectFit: "cover",
+                        }}
                       />
-                      <div style={{ flex: 1, marginLeft: "15px", textAlign: "left" }}>
+                      <div
+                        style={{
+                          flex: 1,
+                          marginLeft: "15px",
+                          textAlign: "left",
+                        }}
+                      >
                         <h4>{product.name}</h4>
                         <p>Price: ${product.price}</p>
                       </div>
                       <div>
-                        <button onClick={() => handleQuantityChange(cartItem.productId, -1)}>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(cartItem.productId, -1)
+                          }
+                        >
                           -
                         </button>
-                        <span style={{ margin: "0 10px" }}>{cartItem.quantity}</span>
-                        <button onClick={() => handleQuantityChange(cartItem.productId, 1)}>
+                        <span style={{ margin: "0 10px" }}>
+                          {cartItem.quantity}
+                        </span>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(cartItem.productId, 1)
+                          }
+                        >
                           +
                         </button>
                       </div>
