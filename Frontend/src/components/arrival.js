@@ -15,7 +15,7 @@ function ArrivalBasic() {
       <Row>
         {/* Image Column */}
         <Col>
-          <Image src="https://via.placeholder.com/1200x800" fluid />
+          <Image src="http://localhost:8080/uploads/home/1736157057458.jpg" fluid />
         </Col>
         
         {/* Content Column */}

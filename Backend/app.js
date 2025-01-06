@@ -24,6 +24,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// Route for uploading home images
+app.post("/api/v1/upload/home", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No file uploaded" });
+  }
+  const filePath = `/uploads/home/${req.file.filename}`; // Construct file path
+  res.status(201).json({ imageURL: filePath }); // Return the file path
+});
+
 // Route for uploading women images
 app.post("/api/v1/upload/women", upload.single("image"), (req, res) => {
   if (!req.file) {
