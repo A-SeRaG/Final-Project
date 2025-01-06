@@ -4,6 +4,7 @@
   --second-color: #AF286E;
   --main-margin-top:150px;
   }
+ 
   /* component */
   .ending::after{
     content: '';
@@ -216,6 +217,9 @@
        margin-bottom: 20px;
       
       }
+    #botn:hover{
+     color: rgb(197, 189, 189);
+    }
     
     .release .swiper {
       width: 100%;

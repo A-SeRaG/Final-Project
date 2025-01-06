@@ -1,6 +1,6 @@
 import NavbarScroll from "../components/navbar.js";
 import Footer from "../components/footer.js";
-import { useState, useEffect, image } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const CartPage = () => {
