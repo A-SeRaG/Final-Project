@@ -1,6 +1,6 @@
 import NavbarScroll from "../components/navbar.js";
 import Footer from "../components/footer.js";
-import { useState, useEffect } from "react";
+import { useState, useEffect, image } from "react";
 import axios from "axios";
 
 const CartPage = () => {
@@ -33,12 +33,17 @@ const CartPage = () => {
         <div>
           <h2>Products</h2>
           {/* Display Product Names */}
-          {Array.isArray(products) &&
+          {/* {Array.isArray(products) &&
             products.map((item) => (
               <h4 key={item.id}>{item.name}</h4> // Displaying only the product name
-            ))}
+            ))} */}
+          <img
+            src="http://localhost:8080/uploads/1736150571385.jpg"
+            alt="Uploaded Image"
+          />
         </div>
       </div>
+
       <Footer />
     </div>
   );

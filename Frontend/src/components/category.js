@@ -13,7 +13,7 @@ const CategoryBasic = () => {
       <Row style={{ marginTop: "20px" }}>
         <Col>
           <Card>
-            <Image src=" " fluid />;
+            <Image src="https://drive.google.com/file/d/1dqKKWCotAsIuEd_VwoYOYHE4tQXx0Qon/view" fluid />;
             <Card.Body>
               <Card.Title>women</Card.Title>
             </Card.Body>
