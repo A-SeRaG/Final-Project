@@ -122,18 +122,18 @@ export default function Release() {
           />
         </SwiperSlide>
       </Swiper>
-      <p id="botn">
+    
         <Link to="/Fullproducts" style={{ textDecoration: "none" }}>
           {" "}
-          <Button
+          <Button id="botn"
             style={{ backgroundColor: "var(--second-color)" }}
-            variant="outline-secondary "
+           
             className="me-3"
           >
             View All
           </Button>{" "}
         </Link>
-      </p>
+  
     </Container>
   );
 }

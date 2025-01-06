@@ -14,7 +14,7 @@ import Shoesbagspage from "./pages/bagsclothes.js";
 import UserProfilepage from "./pages/userprofilepage.js";
 import Loginpage from "./pages/loginpage.js";
 import CartPage from "./pages/cartpage.js";
-
+import ProductDetails from "./pages/productDetails.js";
 const App = () => {
   return (
     <BrowserRouter>
@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/sign-up" element={<Loginpage />} />
         <Route path='/cartpage' element={<CartPage/>}/>
         <Route path="/useraccount" element={<Useracount />} exact />
-
+        <Route path="/product/:productId" element={<ProductDetails />} />
       </Routes>
 
       {/* Footer stays at the bottom */}

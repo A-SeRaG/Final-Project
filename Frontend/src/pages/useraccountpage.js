@@ -58,7 +58,7 @@ const Useracount = () => {
               </NavDropdown>
             </Nav>
             <Nav style={{ textAlign: "center" }}>
-              <Nav.Link href="#" className="nav-i me-2 ">
+              <Nav.Link href="/cartpage" className="nav-i me-2 ">
                 <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
               </Nav.Link>
 

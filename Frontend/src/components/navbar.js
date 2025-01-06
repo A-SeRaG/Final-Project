@@ -10,7 +10,7 @@ import logo from "../images/Logo1.jpg";
 
 const NavbarScroll = () => {
   return (
-    <Navbar expand="lg" style={{ backgroundColor: "white" }}>
+    <Navbar expand="lg" style={{backgroundColor:'white'}}>
       <Container fluid>
         <Navbar.Brand href="#" id="logo">
           <img alt="" src={logo} width="60" height="60" />
