@@ -15,27 +15,30 @@ export default function Basicard() {
         slidesPerView={3} // Default: 3 slides on larger screens
         breakpoints={{
           1024: {
-            slidesPerView: 3, // For large screens, show 3 slides
+            slidesPerView: 4, // For large screens, show 3 slides
           },
           768: {
-            slidesPerView: 2, // For medium screens (tablet), show 2 slides
+            slidesPerView: 3, // For medium screens (tablet), show 2 slides
           },
           480: {
-            slidesPerView: 1, // For small screens (mobile), show only 1 slide
+            slidesPerView: 2, // For small screens (mobile), show only 1 slide
           },
           300: {
-            slidesPerView: 1, // For small screens (mobile), show only 1 slide
+            slidesPerView: 2, // For small screens (mobile), show only 1 slide
           },
         }}
         className="mySwiper"
       >
         {/* Slide 1 */}
         <SwiperSlide>
-          <Link to="/shoesbags" style={{ textDecoration: "none" }}>
+          <Link
+            to="/shoesbags"
+            style={{ textDecoration: "none", textAlign: "center" }}
+          >
             <Card>
               <Image
-                src="http://localhost:8080/uploads/women/1736195318726.jpeg"
-                // src="http://localhost:8080/uploads/home/1736173806378.jpeg"
+                style={{ width: "300px", height: "300px", textAlign: "center" }}
+                src="http://localhost:8080/uploads/home/1736173806378.jpeg"
                 fluid
               />
               <Card.Body>
@@ -49,6 +52,7 @@ export default function Basicard() {
           <Link to="/menpage" style={{ textDecoration: "none" }}>
             <Card>
               <Image
+                style={{ width: "300px", height: "300px" }}
                 src="http://localhost:8080/uploads/home/1736173817307.jpeg"
                 fluid
               />
@@ -63,11 +67,12 @@ export default function Basicard() {
           <Link to="/Fullproducts" style={{ textDecoration: "none" }}>
             <Card>
               <Image
+                style={{ width: "300px", height: "300px" }}
                 src="http://localhost:8080/uploads/home/1736173825281.jpeg"
                 fluid
               />
               <Card.Body>
-                <Card.Title>Weakend Sales.. Harry Up!!</Card.Title>
+                <Card.Title>Weakend Sales-Harry Up!</Card.Title>
               </Card.Body>
             </Card>
           </Link>
@@ -77,6 +82,7 @@ export default function Basicard() {
           <Link to="/menpage" style={{ textDecoration: "none" }}>
             <Card>
               <Image
+                style={{ width: "300px", height: "300px" }}
                 src="http://localhost:8080/uploads/home/1736175545235.jpeg"
                 fluid
               />
@@ -91,11 +97,12 @@ export default function Basicard() {
           <Link to="/womenpage" style={{ textDecoration: "none" }}>
             <Card>
               <Image
+                style={{ width: "300px", height: "300px" }}
                 src="http://localhost:8080/uploads/home/1736174920214.jpeg"
                 fluid
               />
               <Card.Body>
-                <Card.Title>Best Selling For Limeted Time</Card.Title>
+                <Card.Title>Best Selling-Limeted Time</Card.Title>
               </Card.Body>
             </Card>
           </Link>
@@ -105,6 +112,7 @@ export default function Basicard() {
           <Link to="/childernpage" style={{ textDecoration: "none" }}>
             <Card>
               <Image
+                style={{ width: "300px", height: "300px" }}
                 src="http://localhost:8080/uploads/home/1736174795791.jpeg"
                 fluid
               />
