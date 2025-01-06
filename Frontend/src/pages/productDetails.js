@@ -54,7 +54,7 @@ const ProductDetails = () => {
             <h2>{product.name}</h2>
             <p>{product.description}</p>
             <h4>${product.price}</h4>
-            <button id="btn" variant="primary">
+            <button style={{backgroundColor:'black'}} variant="primary">
               Add to Cart
             </button>
           </div>
