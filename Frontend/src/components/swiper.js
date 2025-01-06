@@ -22,8 +22,7 @@ export default function SwiperParent() {
           style={{ width: "100%", height: "50vh", textAlign: "center" }}
         >
           <img
-            src="http://localhost:8080/uploads/home/1736196252035.jpeg"
-            // src="http://localhost:8080/uploads/home/1736158427801.jpg"
+            src="http://localhost:8080/uploads/home/1736158427801.jpg"
             alt="NO IMAGE"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />

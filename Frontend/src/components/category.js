@@ -11,13 +11,13 @@ const CategoryBasic = () => {
       <h2> All category are here: </h2>
       <Row style={{ marginTop: "20px" }}>
         <Col>
-          <Card>
+          <Card style={{ textAlign: "center" }}>
             <Card.Body>
               <Image
-                src=""
+                src="http://localhost:8080/uploads/women/1736152842158.jpg"
                 style={{
-                  height: "100%",
-                  width: "100%",
+                  height: "300px",
+                  width: "300px",
                   objectFit: "cover",
                 }}
                 fluid
@@ -40,13 +40,13 @@ const CategoryBasic = () => {
           </Card>
         </Col>
         <Col>
-          <Card>
+          <Card style={{ textAlign: "center" }}>
             <Card.Body>
               <Image
-                src=""
+                src="http://localhost:8080/uploads/men/1736154692046.jpg"
                 style={{
-                  height: "100%",
-                  width: "100%",
+                  height: "300px",
+                  width: "300px",
                   objectFit: "cover",
                 }}
                 fluid
@@ -58,8 +58,9 @@ const CategoryBasic = () => {
       </Row>
       <Row style={{ marginTop: "20px" }}>
         <Col>
-          <Card>
+          <Card style={{ textAlign: "center" }}>
             <Card.Body>
+
 
             <Image  src=''  
               style={{
@@ -70,6 +71,17 @@ const CategoryBasic = () => {
     fluid
   />
   
+
+              <Image
+                src="http://localhost:8080/uploads/kids/1736155058944.jpg"
+                style={{
+                  height: "300px",
+                  width: "300px",
+                  objectFit: "cover",
+                }}
+                fluid
+              />
+
               <Card.Title>childern</Card.Title>
 
             </Card.Body>
@@ -77,7 +89,7 @@ const CategoryBasic = () => {
         </Col>
         <Col>
           {" "}
-          <Card>
+          <Card style={{ textAlign: "center" }}>
             <Image
                        style={{
                         height: '100%',
@@ -95,14 +107,13 @@ const CategoryBasic = () => {
         </Col>
         <Col>
           {" "}
-          <Card>
+          <Card style={{ textAlign: "center" }}>
             <Image
-              src="https://media.istockphoto.com/id/907084700/photo/green-grass-at-sunset.jpg?s=1024x1024&w=is&k=20&c=LN3dtAo5vLE7THwQVnymriee9ySTULmwc7VhaTLGWkA="
-              // src="http://localhost:8080/uploads/bags/1736154380153.jpg"
+              src="http://localhost:8080/uploads/bags/1736154380153.jpg"
               style={{
-                height: '100%',
-                width: '100%',
-                objectFit: 'cover',
+                height: "300px",
+                width: "300px",
+                objectFit: "cover",
               }}
     fluid
             />
