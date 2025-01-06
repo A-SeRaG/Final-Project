@@ -12,41 +12,46 @@ const CategoryBasic = () => {
       <Row style={{ marginTop: "20px" }}>
         <Col>
           <Card>
-   
             <Card.Body>
-            <Image 
-  src='' 
-  style={{ 
-    height: '100%', 
-    width: '100%', 
-    objectFit: 'cover' }}  fluid/>
+              <Image
+                src=""
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+                fluid
+              />
               <Card.Title>women</Card.Title>
             </Card.Body>
           </Card>
         </Col>
-        <Col >
+        <Col>
           <Card style={{ backgroundColor: "var(--second-color)" }}>
-            <Card.Body  style={{ 
-    height: '100%', 
-    width: '100%', 
-    objectFit: 'cover'  
-  }} >
+            <Card.Body
+              style={{
+                height: "100%",
+                width: "100%",
+                objectFit: "cover",
+              }}
+            >
               <h3 style={{ fontSize: "20px" }}>Explore our Top categories </h3>
             </Card.Body>
           </Card>
         </Col>
         <Col>
           <Card>
-            <Card.Body >
-            <Image 
-  src='' 
-  style={{ 
-    height: '100%', 
-    width: '100%', 
-    objectFit: 'cover'  
-  }} 
-fluid
-/><Card.Title>men</Card.Title>
+            <Card.Body>
+              <Image
+                src=""
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  objectFit: "cover",
+                }}
+                fluid
+              />
+              <Card.Title>men</Card.Title>
             </Card.Body>
           </Card>
         </Col>
@@ -55,6 +60,7 @@ fluid
         <Col>
           <Card>
             <Card.Body>
+
             <Image  src={image}  style={{ 
     height: '100%', 
     width: '100%', 
@@ -62,17 +68,29 @@ fluid
   }}  fluid
   />
   <Card.Title>childern</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col >
-          {" "}
-          <Card>
-            <Image src="http://localhost:8080/uploads/shoes/1736153677185.jpg"  style={{ 
+
+              <Image src=""   style={{ 
     height: '100%', 
     width: '100%', 
     objectFit: 'cover'  
-  }}  fluid />
+  }}  fluid/>
+              <Card.Title>childern</Card.Title>
+
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          {" "}
+          <Card>
+            <Image
+              src="../images/category/Shoes.jpg"
+              style={{
+                height: "100%",
+                width: "100%",
+                objectFit: "cover",
+              }}
+              fluid
+            />
             <Card.Body>
               <Card.Title>shoes</Card.Title>
             </Card.Body>
@@ -81,11 +99,15 @@ fluid
         <Col>
           {" "}
           <Card>
-            <Image src="http://localhost:8080/uploads/bags/1736154380153.jpg"  style={{ 
-    height: '100%', 
-    width: '100%', 
-    objectFit: 'cover'  
-  }}  fluid />
+            <Image
+              src="http://localhost:8080/uploads/bags/1736154380153.jpg"
+              style={{
+                height: "100%",
+                width: "100%",
+                objectFit: "cover",
+              }}
+              fluid
+            />
             <Card.Body>
               <Card.Title>bags</Card.Title>
             </Card.Body>

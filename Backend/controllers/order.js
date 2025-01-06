@@ -1,13 +1,12 @@
 import { validationResult } from 'express-validator';
-import { Order, OrderItem, User } from '../models/index.js';
+import { Order, OrderItem, User, Product } from '../models/index.js';
 import WebError from '../utils/webError.js';
 import extractMessage from '../utils/extractMessage.js';
 
 const orderController = {
 	async getOrders(req, res, next) {
 		try {
-			const query = req.role === 'customer' ? { where: { userId: req.userId } } : {};
-			const orders = await Order.findAll(query);
+			const orders = await Order.findAll({ where: { userId: req.userId } });
 			res.status(200).json({ orders });
 		} catch (err) {
 			err.statusCode = err.statusCode || 500;
@@ -43,37 +42,20 @@ const orderController = {
 
 	async postOrder(req, res, next) {
 		try {
-			const statuses = ['Pending', 'Shipped', 'Delivered', 'Canceled'];
-			const { role, userId: customerId } = req;
-			const { userId, totalPrice, status } = req.body;
+			const { userId: customerId } = req;
+			const order = await Order.findOne({ where: { userId: customerId, status: 'Pending' } });
 
-			if (role === 'customer') {
-				const order = await Order.findOne({ where: { userId: customerId, status: 'Pending' } });
-				if (order) {
-					throw new WebError('Cart already exists', 400);
-				}
-				const newOrder = await Order.create({
-					userId: customerId,
-					totalPrice: 0,
-					status: 'Pending',
-				});
-				return res.status(201).json({ message: 'Order created successfully', order: newOrder });
+			if (order) {
+				throw new WebError('Cart already exists', 400);
 			}
 
-			if (!statuses.includes(status)) {
-				throw new WebError('Not a valid status', 400);
-			}
-			if (typeof totalPrice !== 'number') {
-				throw new WebError('Not a valid price', 400);
-			}
+			const newOrder = await Order.create({
+				userId: customerId,
+				totalPrice: 0,
+				status: 'Pending',
+			});
 
-			const user = await User.findOne({ where: { id: userId } });
-			if (!user) {
-				throw new WebError('User not found', 404);
-			}
-
-			const newOrder = await Order.create({ userId, totalPrice, status });
-			res.status(201).json({ message: 'Order created successfully', order: newOrder });
+			return res.status(201).json({ message: 'Order created successfully', order: newOrder });
 		} catch (err) {
 			err.statusCode = err.statusCode || 500;
 			next(err);
@@ -118,6 +100,37 @@ const orderController = {
 			next(err);
 		}
 	},
+
+	async checkoutOrder(req, res, next) {
+		try {
+			const userId = req.userId;
+
+			const order = await Order.findOne({ where: { userId, status: 'Pending' } });
+			if (!order) {
+				throw new WebError('No pending cart found', 400);
+			}
+
+			if (order.totalPrice === 0) {
+				throw new WebError('No items added to cart', 400);
+			}
+			const items = await OrderItem.findAll({ where: { orderId: order.id } });
+			for (const item of items) {
+				const product = await Product.findOne({ where: { id: item.productId } });
+				if (product.stock < item.quantity) {
+					throw new WebError(`Insufficient stock for product: ${product.name}`, 400);
+				}
+				await product.update({ stock: product.stock - item.quantity });
+			}
+
+			await order.update({ status: 'Shipped' });
+
+			res.status(200).json({ message: 'Order checked out successfully', order });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
+			next(err);
+		}
+	},
+
 };
 
 export default orderController;

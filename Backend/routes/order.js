@@ -14,5 +14,8 @@ router.route('/orders/:id')
   .get(isAuth, orderController.getOrderById)
   .patch(isAdmin, orderController.updateOrderById)
   .delete(isAdmin, orderController.deleteOrderById);
+router.route('/checkout')
+  .all(isAuth)
+  .post(orderController.checkoutOrder);
 
 export default router;

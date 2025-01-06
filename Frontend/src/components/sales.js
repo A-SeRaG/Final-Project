@@ -34,7 +34,8 @@ export default function Basicard() {
           <Link to="/shoesbags" style={{ textDecoration: "none" }}>
             <Card>
               <Image
-                src="http://localhost:8080/uploads/home/1736173806378.jpeg"
+                src="http://localhost:8080/uploads/women/1736195318726.jpeg"
+                // src="http://localhost:8080/uploads/home/1736173806378.jpeg"
                 fluid
               />
               <Card.Body>

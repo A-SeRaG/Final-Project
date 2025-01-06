@@ -6,19 +6,32 @@ import WebError from '../utils/webError.js';
 import extractMessage from '../utils/extractMessage.js';
 
 const orderItemController = {
+	async getCart(req, res, next) {
+		try {
+			const userId = req.userId;
+			let orderItems
+			const order = await Order.findOne({ where: { userId, status: 'Pending' } });
+			if (order) {
+				orderItems = await OrderItem.findAll({ where: { orderId: order.id } });
+			} else {
+				orderItems = [];
+			}
+			res.status(200).json({ orderItems });
+		} catch (err) {
+			err.statusCode = err.statusCode || 500;
+			next(err);
+		}
+	},
+
 	async getOrderItems(req, res, next) {
 		try {
 			const userId = req.userId;
 			let orderItems
-			if (req.role === 'admin') {
-				orderItems = await OrderItem.findAll();
+			const order = await Order.findOne({ where: { userId } });
+			if (order) {
+				orderItems = await OrderItem.findAll({ where: { orderId: order.id } });
 			} else {
-				const order = await Order.findOne({ where: { userId, status: 'Pending' } });
-				if (order) {
-					orderItems = await OrderItem.findAll({ where: { orderId: order.id } });
-				} else {
-					orderItems = [];
-				}
+				orderItems = [];
 			}
 			res.status(200).json({ orderItems });
 		} catch (err) {
@@ -55,7 +68,7 @@ const orderItemController = {
 		}
 	},
 
-	async postOrderItem(req, res, next) {
+	async postCart(req, res, next) {
 		try {
 			const result = validationResult(req);
 			if (!result.isEmpty()) {
