@@ -4,15 +4,10 @@ import Container from "react-bootstrap/esm/Container";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import Cardcomponent from "./card";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
-// import required modules
 import { Pagination } from "swiper/modules";
 
 
