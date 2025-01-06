@@ -2,31 +2,17 @@ import express from 'express';
 import { body } from 'express-validator';
 
 import orderController from '../controllers/order.js';
+import { isAuth, isAdmin } from '../middleware/is-auth.js';
 
 const router = express.Router();
 
 router.route('/orders')
+  .all(isAuth)
   .get(orderController.getOrders)
-  .post(
-    [
-      body('userId')
-        .trim()
-        .notEmpty()
-        .isInt()
-        .withMessage('Not a valid user id'),
-      body('totalPrice')
-        .trim()
-        .notEmpty()
-        .withMessage('Not a valid price'),
-      body('status')
-        .trim()
-        .notEmpty()
-        .withMessage('Not a valid status'),
-    ],
-    orderController.postOrder);
+  .post(orderController.postOrder);
 router.route('/orders/:id')
-  .get(orderController.getOrderById)
-  .patch(orderController.updateOrderById)
-  .delete(orderController.deleteOrderById);
+  .get(isAuth, orderController.getOrderById)
+  .patch(isAdmin, orderController.updateOrderById)
+  .delete(isAdmin, orderController.deleteOrderById);
 
 export default router;

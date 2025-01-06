@@ -13,10 +13,6 @@ const OrderItem = sequelize.define('OrderItem', {
     type: Sequelize.DOUBLE,
     allowNull: false
   },
-  price: {
-    type: Sequelize.DOUBLE,
-    allowNull: false,
-  },
 });
 
 export default OrderItem;
