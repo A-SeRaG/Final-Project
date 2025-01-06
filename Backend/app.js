@@ -2,12 +2,22 @@ import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
 
+<<<<<<< HEAD
 import { sequelize } from "./models/index.js";
 import productRoutes from "./routes/product.js";
 import userRoutes from "./routes/user.js";
 import orderRoutes from "./routes/order.js";
 import orderItemRoutes from "./routes/order_item.js";
 import upload from "./storage.js"; // Import multer configuration
+=======
+import { sequelize } from './models/index.js';
+
+import productRoutes from './routes/product.js';
+import userRoutes from './routes/user.js';
+import orderRoutes from './routes/order.js';
+import orderItemRoutes from './routes/order_item.js';
+import authRoutes from './routes/auth.js';
+>>>>>>> ceef3da334641c69bd1e6b5c83404d8afaae2099
 
 const app = express();
 
@@ -24,6 +34,7 @@ app.use((req, res, next) => {
   next();
 });
 
+<<<<<<< HEAD
 // Route for uploading home images
 app.post("/api/v1/upload/home", upload.single("image"), (req, res) => {
   if (!req.file) {
@@ -31,6 +42,19 @@ app.post("/api/v1/upload/home", upload.single("image"), (req, res) => {
   }
   const filePath = `/uploads/home/${req.file.filename}`; // Construct file path
   res.status(201).json({ imageURL: filePath }); // Return the file path
+=======
+// initialize routes
+app.use('/api/v1', productRoutes);
+app.use('/api/v1', userRoutes);
+app.use('/api/v1', orderRoutes);
+app.use('/api/v1', orderItemRoutes);
+app.use('/api/v1', authRoutes);
+
+// error handling
+app.use((err, req, res, next) => {
+  const stat = err.statusCode || 500;
+  return res.status(stat).json({ error: err.message })
+>>>>>>> ceef3da334641c69bd1e6b5c83404d8afaae2099
 });
 
 // Route for uploading women images
