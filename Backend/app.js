@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 // Route for uploading home images
-app.post("/api/v1/upload/home", upload.single("image"), (req, res) => {
+app.post("/api/v1/uploads/home", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
@@ -34,7 +34,7 @@ app.post("/api/v1/upload/home", upload.single("image"), (req, res) => {
 });
 
 // Route for uploading women images
-app.post("/api/v1/upload/women", upload.single("image"), (req, res) => {
+app.post("/api/v1/uploads/women", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
@@ -43,7 +43,7 @@ app.post("/api/v1/upload/women", upload.single("image"), (req, res) => {
 });
 
 // Route for uploading bags images
-app.post("/api/v1/upload/bags", upload.single("image"), (req, res) => {
+app.post("/api/v1/uploads/bags", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
@@ -52,7 +52,7 @@ app.post("/api/v1/upload/bags", upload.single("image"), (req, res) => {
 });
 
 // Route for uploading shoes images
-app.post("/api/v1/upload/shoes", upload.single("image"), (req, res) => {
+app.post("/api/v1/uploads/shoes", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
@@ -61,7 +61,7 @@ app.post("/api/v1/upload/shoes", upload.single("image"), (req, res) => {
 });
 
 // Route for uploading men images
-app.post("/api/v1/upload/men", upload.single("image"), (req, res) => {
+app.post("/api/v1/uploads/men", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
@@ -70,7 +70,7 @@ app.post("/api/v1/upload/men", upload.single("image"), (req, res) => {
 });
 
 // Route for uploading kids images
-app.post("/api/v1/upload/kids", upload.single("image"), (req, res) => {
+app.post("/api/v1/uploads/kids", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
