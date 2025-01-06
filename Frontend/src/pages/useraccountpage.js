@@ -29,7 +29,7 @@ const Useracount = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Nav.Link id="nav-link" href="/Home">
+              <Nav.Link id="nav-link" href="/useraccount">
                 Home
               </Nav.Link>
               <Nav.Link id="nav-link" href="/About">

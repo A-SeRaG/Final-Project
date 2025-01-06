@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Button } from "react-bootstrap";
+import { Container} from "react-bootstrap";
 import NavbarScroll from "../components/navbar";
 import Footer from "../components/footer";
 import axios from "axios";
@@ -55,9 +55,9 @@ const ProductDetails = () => {
             <h2>{product.name}</h2>
             <p>{product.description}</p>
             <h4>${product.price}</h4>
-            <Button variant="primary">
+            <button variant="primary">
               Add to Cart
-            </Button>
+            </button>
           </div>
         </div>
       </Container>
