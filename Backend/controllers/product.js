@@ -4,7 +4,6 @@ import WebError from "../utils/webError.js";
 import extractMessage from "../utils/extractMessage.js";
 
 const productController = {
-<<<<<<< HEAD
   getProducts(req, res, next) {
     const { category } = req.query; // Extract the category from the query parameters
     const whereClause = category ? { where: { category } } : {}; // Add a condition if a category is provided
@@ -129,7 +128,6 @@ const productController = {
         next(err);
       });
   },
-=======
 	async getProducts(req, res, next) {
 		try {
 			const products = await Product.findAll();
@@ -225,7 +223,6 @@ const productController = {
 			next(err);
 		}
 	},
->>>>>>> ceef3da334641c69bd1e6b5c83404d8afaae2099
 };
 
 export default productController;
