@@ -10,12 +10,12 @@
     content: '';
     position: absolute;
     width:80%;
-     background-color:gainsboro;
-     height: 1px;
-     left: 50%;
-     transform: translateX(-50%);
-     margin-top: 70px;
-     margin-bottom: 20px;
+    background-color:gainsboro;
+    height: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 70px;
+    margin-bottom: 20px;
   }
   .bordy {
     font-size: 15px;
