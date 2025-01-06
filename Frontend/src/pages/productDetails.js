@@ -40,10 +40,10 @@ const ProductDetails = () => {
           <h2>{product.title}</h2>  
           <p>{product.description}</p>  
           <h4>${product.price}</h4> 
-          <Button variant="primary">Add to Cart</Button> 
+          <Button id='btn' variant="primary">Add to Cart</Button> 
         </div>
       </div>
-      <Footer />  {/* Footer */}
+      <Footer />  
     </Container>
   );
 };
