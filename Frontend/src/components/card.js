@@ -55,9 +55,9 @@ const Cardcomponent = ({ product }) => {
   };
 
   return (
-    <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
-      <Card id="card" style={{ width: "18rem" }}>
-        <Card.Body>
+    <Card id="card" style={{ width: "18rem" }}>
+      <Card.Body>
+        <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
           <Image
             style={{
               height: '300px',
@@ -70,10 +70,10 @@ const Cardcomponent = ({ product }) => {
           <Card.Title>{product.name || "Unnamed Product"}</Card.Title>
           <p>Description: {product.description || "No description available"}</p>
           <p>Price: ${product.price || "N/A"}</p>
-          <Button id="btn" variant="primary" onClick={handleAddToCart}>Add to Cart</Button>
-        </Card.Body>
-      </Card>
-    </Link>
+        </Link >
+        <Button id="btn" variant="primary" onClick={handleAddToCart}>Add to Cart</Button>
+      </Card.Body>
+    </Card>
   );
 };
 
