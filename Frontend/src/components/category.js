@@ -3,7 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
-
+import image from '../images/category/women.jpg'
 const CategoryBasic = () => {
   return (
     <Container className="category">
@@ -55,7 +55,12 @@ fluid
         <Col>
           <Card>
             <Card.Body>
-            <Image src=''/>
+            <Image  src={image}  style={{ 
+    height: '100%', 
+    width: '100%', 
+    objectFit: 'cover'  
+  }}  fluid
+  />
   <Card.Title>childern</Card.Title>
             </Card.Body>
           </Card>
