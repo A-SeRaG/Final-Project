@@ -86,7 +86,8 @@ const CategoryBasic = () => {
           {" "}
           <Card>
             <Image
-              src="http://localhost:8080/uploads/bags/1736154380153.jpg"
+              src="https://media.istockphoto.com/id/907084700/photo/green-grass-at-sunset.jpg?s=1024x1024&w=is&k=20&c=LN3dtAo5vLE7THwQVnymriee9ySTULmwc7VhaTLGWkA="
+              // src="http://localhost:8080/uploads/bags/1736154380153.jpg"
               style={{
                 height: "100%",
                 width: "100%",
