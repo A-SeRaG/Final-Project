@@ -1,13 +1,11 @@
 
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import Image from "react-bootstrap/Image";
-=======
-import Image from "react-bootstrap/esm/Image";
+
+// import Image from "react-bootstrap/esm/Image";
 import axios from "axios";
->>>>>>> 59290eed7bb0386b676c563a82426423b5583776
 
 const Cardcomponent = ({ product }) => {
   if (!product) {
@@ -40,8 +38,7 @@ const Cardcomponent = ({ product }) => {
   };
 
   return (
-<<<<<<< HEAD
-    <Link to={`/product/${product.id}`}>
+    <Link style={{textDecoration: 'none'}} to={`/product/${product.id}`}>
       <Card id="card" style={{ width: "18rem" }}>
         <Card.Body>
           <Image
@@ -60,19 +57,19 @@ const Cardcomponent = ({ product }) => {
         </Card.Body>
       </Card>
     </Link>
-=======
-    <Card id="card" style={{ width: "18rem" }}>
-      <Card.Body>
-        <Image src={product.imageURL || "placeholder.jpg"} fluid />
-        <Card.Title>{product.name || "Unnamed Product"}</Card.Title>
-        <p>Description: {product.description || "No description"}</p>
-        <p>Price: ${product.price || "N/A"}</p>
-        <Button id="btn" variant="primary" onClick={handleAddToCart}>
-          Add to Cart
-        </Button>
-      </Card.Body>
-    </Card>
->>>>>>> 59290eed7bb0386b676c563a82426423b5583776
+// =======
+//     <Card id="card" style={{ width: "18rem" }}>
+//       <Card.Body>
+//         <Image src={product.imageURL || "placeholder.jpg"} fluid />
+//         <Card.Title>{product.name || "Unnamed Product"}</Card.Title>
+//         <p>Description: {product.description || "No description"}</p>
+//         <p>Price: ${product.price || "N/A"}</p>
+//         <Button id="btn" variant="primary" onClick={handleAddToCart}>
+//           Add to Cart
+//         </Button>
+//       </Card.Body>
+//     </Card>
+// >>>>>>> 59290eed7bb0386b676c563a82426423b5583776
   );
 };
 
