@@ -1,166 +1,44 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Cardcomponent from "./card";
-import { Link } from "react-router-dom";
 
+const Fullporducts = ({ category }) => {
+  const [products, setProducts] = useState([]);
 
-const Fullporducts = () => {
-    return (
-        <Container className="fullproduct">
-            <div className="link-slide">
-                {" "}
-                <ul className="d-flex " style={{ listStyle: "none" }}>
-                    <li>
-                        {" "}
-                        <Link
-                            to="/home"
-                            style={{ textDecoration: "none", color: "inherit" }}
-                        >
-                            Home
-                        </Link>
-                    </li>
-                    <span>/</span>
-                    <li>
-                        {" "}
-                        <Link
-                            to="/Fullproducts"
-                            style={{ textDecoration: "none", color: "inherit" }}
-                        >
-                            Products
-                        </Link>
-                    </li>
-                </ul>
-            </div>
-            <Row>
-                <Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                </Col>
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const endpoint = category
+          ? `http://localhost:8080/api/v1/products?category=${category}`
+          : "http://localhost:8080/api/v1/products";
+        const response = await axios.get(endpoint);
+        setProducts(response.data.products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
 
-                {/* anthor col */}
-                <Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                </Col>
-                {/* another col */}
-                <Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                </Col>
-                {/* another col */}
-                <Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                </Col>
-                {/* another col */}
-                <Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                </Col>
-                {/* another col */}
-                <Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                    <Col>
-                        <Cardcomponent
-                            ImageSrc="path_to_your_image.jpg"
-                            title="Product Name"
-                        />
-                    </Col>
-                </Col>
-            </Row>
-        </Container>
-    );
+    fetchProducts();
+  }, [category]);
+
+  return (
+    <Container className="fullproduct">
+      <Row>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <Col key={product.id} sm={12} md={6} lg={4}>
+              <Cardcomponent product={product} />
+            </Col>
+          ))
+        ) : (
+          <p>No products available</p>
+        )}
+      </Row>
+    </Container>
+  );
 };
+
 export default Fullporducts;

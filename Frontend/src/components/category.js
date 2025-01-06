@@ -13,7 +13,7 @@ const CategoryBasic = () => {
       <Row style={{ marginTop: "20px" }}>
         <Col>
           <Card>
-            <Image src=" " fluid />;
+            <Image src="http://localhost:8080/uploads/women/1736152842158.jpg" fluid />
             <Card.Body>
               <Card.Title>women</Card.Title>
             </Card.Body>
@@ -29,7 +29,7 @@ const CategoryBasic = () => {
         <Col>
           <Card>
             <Card.Body>
-              <Image src=" " fluid />;<Card.Title>men</Card.Title>
+              <Image src="http://localhost:8080/uploads/men/1736154692046.jpg" fluid /><Card.Title>men</Card.Title>
             </Card.Body>
           </Card>
         </Col>
@@ -38,14 +38,14 @@ const CategoryBasic = () => {
         <Col>
           <Card>
             <Card.Body>
-              <Image src=" " fluid />;<Card.Title>childern</Card.Title>
+              <Image src="http://localhost:8080/uploads/kids/1736155098752.jpg" fluid /><Card.Title>childern</Card.Title>
             </Card.Body>
           </Card>
         </Col>
         <Col xs={5}>
           {" "}
           <Card>
-            <Image src=" " fluid />;
+            <Image src="http://localhost:8080/uploads/shoes/1736153677185.jpg" fluid />
             <Card.Body>
               <Card.Title>shoes</Card.Title>
             </Card.Body>
@@ -54,7 +54,7 @@ const CategoryBasic = () => {
         <Col>
           {" "}
           <Card>
-            <Image src=" " fluid />;
+            <Image src="http://localhost:8080/uploads/bags/1736154380153.jpg" fluid />
             <Card.Body>
               <Card.Title>bags</Card.Title>
             </Card.Body>
