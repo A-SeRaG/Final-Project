@@ -8,14 +8,14 @@ import userRoutes from "./routes/user.js";
 import orderRoutes from "./routes/order.js";
 import orderItemRoutes from "./routes/order_item.js";
 import authRoutes from "./routes/auth.js";
-import helmet from "helmet";
-import morgan from "morgan";
+// import helmet from "helmet";
+// import morgan from "morgan";
 
 const app = express();
 
 // Middleware
-app.use(helmet());
-app.use(morgan("dev"));
+// app.use(helmet());
+// app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use("/uploads", express.static(path.join(process.cwd(), "public/uploads")));
 
