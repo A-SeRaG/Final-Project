@@ -6,9 +6,9 @@ import { isAuth, isAdmin } from '../middleware/is-auth.js';
 
 const router = express.Router();
 
-router.route('/order-items')
+router.route('/cart')
   .all(isAuth)
-  .get(orderItemController.getOrderItems)
+  .get(orderItemController.getCart)
   .post(
     [
       body('productId')
@@ -22,7 +22,11 @@ router.route('/order-items')
         .isFloat()
         .withMessage('Not a valid quantity'),
     ],
-    orderItemController.postOrderItem);
+    orderItemController.postCart);
+
+router.route('/order-items')
+  .all(isAuth)
+  .get(orderItemController.getOrderItems)
 
 router.route('/order-items/:id')
   .all(isAuth)
