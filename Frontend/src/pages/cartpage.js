@@ -2,6 +2,9 @@ import NavbarScroll from "../components/navbar.js";
 import Footer from "../components/footer.js";
 import { useState, useEffect, image } from "react";
 import axios from "axios";
+import { Card } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+
 
 const CartPage = () => {
   const [count, setCount] = useState(1);
@@ -41,6 +44,15 @@ const CartPage = () => {
             src="http://localhost:8080/uploads/1736150571385.jpg"
             alt="Uploaded Image"
           />
+                    <Card>
+            <Image
+              src="http://localhost:8080/api/v1/upload/home/1736173806378.jpeg"
+              fluid
+            />
+            <Card.Body>
+              <Card.Title>women</Card.Title>
+            </Card.Body>
+          </Card>
         </div>
       </div>
 

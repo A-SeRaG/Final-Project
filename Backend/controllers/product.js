@@ -3,6 +3,7 @@ import { Product } from "../models/index.js";
 import WebError from "../utils/webError.js";
 import extractMessage from "../utils/extractMessage.js";
 
+
 const productController = {
   getProducts(req, res, next) {
     const { category } = req.query; // Extract the category from the query parameters
