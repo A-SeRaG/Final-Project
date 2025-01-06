@@ -41,20 +41,21 @@ const ProductDetails = () => {
   return (
     <div>
       <NavbarScroll />
-      <Container>
+      <Container style={{ margin: "20px" }}>
         <div className="row">
           <div className="col-md-6">
             <img
-              src={product.image || "/path/to/default-image.jpg"}
+              src={product.imageURL || "/path/to/default-image.jpg"}
               alt={product.name || "Product Image"}
               className="img-fluid"
+              style={{ width: "350px", height: "400px" }}
             />
           </div>
           <div className="col-md-6">
             <h2>{product.name}</h2>
             <p>{product.description}</p>
             <h4>${product.price}</h4>
-            <Button id="btn" variant="primary">
+            <Button variant="primary">
               Add to Cart
             </Button>
           </div>

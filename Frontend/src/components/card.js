@@ -1,11 +1,7 @@
-
-
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import Image from "react-bootstrap/Image";
-
-// import Image from "react-bootstrap/esm/Image";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
 
