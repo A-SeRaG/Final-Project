@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 import Footer from "../components/footer";
 import axios from "axios";
@@ -85,7 +85,7 @@ const ProductDetails = () => {
 
   return (
     <div>
-  
+
       <Container style={{ margin: "20px" }}>
         <div className="row">
           <div className="col-md-6">
@@ -100,7 +100,7 @@ const ProductDetails = () => {
             <h2>{product.name}</h2>
             <p>{product.description}</p>
             <h4>${product.price}</h4>
-            <Button variant="primary" onClick={handleAddToCart}>
+            <button variant="primary" onClick={handleAddToCart}>
               Add to Cart
             </button>
           </div>
