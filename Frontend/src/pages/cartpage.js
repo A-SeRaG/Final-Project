@@ -16,6 +16,7 @@ const CartPage = () => {
 
       if (!token) {
         alert("You must be logged in to view your cart.");
+        navigate("/Sign-up"); // Redirect to the sign-up page
         return;
       }
 

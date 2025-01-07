@@ -19,7 +19,8 @@ const ProductDetails = () => {
 
       if (!token) {
         alert("You must be logged in to add products to the cart.");
-        return;
+        navigate("/Sign-up"); // Redirect to the sign-up page
+        return
       }
 
       // Fetch cart items to check if the product is already in the cart
@@ -35,6 +36,7 @@ const ProductDetails = () => {
       if (isProductInCart) {
         alert("Product is already in your cart. Redirecting to cart...");
         navigate("/cartpage"); // Redirect to the cart page
+        return
       } else {
         // Add product to the cart if not already present
         await axios.post(
