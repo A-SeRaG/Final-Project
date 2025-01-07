@@ -7,12 +7,9 @@ import CategoryBasic from '../components/category.js';
 import ArrivalBasic from '../components/arrival.js';
 import Release from '../components/release.js';
 
-
-
 const HomePage = () => {
     return (
       <div>
-   
         <SwiperParent />
         <Timer />
         <Basicard />

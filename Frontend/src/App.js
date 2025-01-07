@@ -16,16 +16,24 @@ import CartPage from "./pages/cartpage.js";
 import ProductDetails from "./pages/productDetails.js";
 import Usernavbar from "./components/usernavbar.js";
 import NavbarScroll from "./components/navbar.js";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Assuming you want to track login state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Check if the user is logged in (e.g., by checking for a token in localStorage)
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
   return (
     <BrowserRouter>
       {/* Conditionally render Usernavbar if logged in, otherwise show NavbarScroll */}
-      {isLoggedIn ? <Usernavbar /> : <NavbarScroll />}
-      
+      {{isLoggedIn} ? <Usernavbar /> : <NavbarScroll />}
       <Routes>
         {/* Define routes for each page/component */}
         <Route path="/about" element={<Aboutpage />} />
@@ -39,10 +47,9 @@ const App = () => {
         <Route path="/shoesbags" element={<Shoesbagspage />} />
         <Route path="/profile" element={<UserProfilepage />} />
         <Route path="/sign-up" element={<Loginpage />} />
-        <Route path='/cartpage' element={<CartPage />} />
+        <Route path="/cartpage" element={<CartPage />} />
         <Route path="/useraccount" element={<Useracount />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
-        
         {/* Catch-all route for unmatched paths */}
         <Route path="/*" element={<Erorpage />} />
       </Routes>

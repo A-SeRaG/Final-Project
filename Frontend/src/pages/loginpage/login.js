@@ -1,11 +1,13 @@
 import './login.css';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
 const Login = () => {
     const [isActive, setIsActive] = useState(false);
     const [loginData, setLoginData] = useState({ email: '', password: '' });
     const [registerData, setRegisterData] = useState({ name: '', email: '', password: '' });
+    const navigate = useNavigate();  // Initialize useNavigate
 
     const handleRegisterClick = () => setIsActive(true);
     const handleLoginClick = () => setIsActive(false);
@@ -27,6 +29,7 @@ const Login = () => {
             const response = await axios.post('http://localhost:8080/api/v1/login', loginData);
             localStorage.setItem('token', response.data.token);
             alert('Login successful!');
+            navigate('/useraccount');  // Redirect to Useraccount page after successful login
         } catch (error) {
             console.error('Error during login:', error);
             alert(error.response?.data?.error || 'Login failed.');
@@ -107,4 +110,3 @@ const Login = () => {
 };
 
 export default Login;
-

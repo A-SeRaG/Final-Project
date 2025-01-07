@@ -5,7 +5,6 @@ import UserProfile from "../components/user.js";
 const UserProfilepage = () => {
     return (
         <div>
-    
             <UserProfile />
             <Footer />
         </div>
