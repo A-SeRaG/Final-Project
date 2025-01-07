@@ -21,7 +21,7 @@ import React, { useState, useEffect } from "react";
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check if the user is logged in (e.g., by checking for a token in localStorage)
+  // Check the login status from localStorage on page load
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -30,12 +30,19 @@ const App = () => {
       setIsLoggedIn(false);
     }
   }, []);
+
+  // Update login status after logout
+  const handleLogout = () => {
+    localStorage.removeItem('token');  // Remove token on logout
+    setIsLoggedIn(false);  // Update login status
+  };
+
   return (
     <BrowserRouter>
       {/* Conditionally render Usernavbar if logged in, otherwise show NavbarScroll */}
-      {{isLoggedIn} ? <Usernavbar /> : <NavbarScroll />}
+      {isLoggedIn ? <Usernavbar onLogout={handleLogout} /> : <NavbarScroll />}
+
       <Routes>
-        {/* Define routes for each page/component */}
         <Route path="/about" element={<Aboutpage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/" element={<HomePage />} /> {/* Default Route */}
@@ -46,10 +53,11 @@ const App = () => {
         <Route path="/childernpage" element={<Childrenpage />} />
         <Route path="/shoesbags" element={<Shoesbagspage />} />
         <Route path="/profile" element={<UserProfilepage />} />
-        <Route path="/sign-up" element={<Loginpage />} />
-        <Route path="/cartpage" element={<CartPage />} />
+        <Route path="/sign-up" element={<Loginpage setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path='/cartpage' element={<CartPage />} />
         <Route path="/useraccount" element={<Useracount />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
+
         {/* Catch-all route for unmatched paths */}
         <Route path="/*" element={<Erorpage />} />
       </Routes>

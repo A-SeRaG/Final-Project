@@ -5,7 +5,6 @@ import Login from "./loginpage/login.js";
 const Loginpage = () => {
     return (
         <div>
-         
             <Login />
             <Footer />
         </div>

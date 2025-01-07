@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
     const [isActive, setIsActive] = useState(false);
     const [loginData, setLoginData] = useState({ email: '', password: '' });
     const [registerData, setRegisterData] = useState({ name: '', email: '', password: '' });
@@ -27,12 +27,26 @@ const Login = () => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8080/api/v1/login', loginData);
-            localStorage.setItem('token', response.data.token);
-            alert('Login successful!');
-            navigate('/useraccount');  // Redirect to Useraccount page after successful login
+
+            // Check if the response contains a token
+            if (response.data && response.data.token) {
+                console.log("Response:", response);  // Log the response data for debugging
+
+                localStorage.setItem('token', response.data.token);  // Save token in localStorage
+                alert('Login successful!');
+                setIsLoggedIn(true);  // Update login status
+                navigate('/useraccount');  // Redirect to Useraccount page after successful login
+            } else {
+                alert('Login failed. Token not received.');
+            }
         } catch (error) {
             console.error('Error during login:', error);
-            alert(error.response?.data?.error || 'Login failed.');
+
+            // Log the error response from the server
+            console.log("Error Response:", error.response);
+
+            // Display the error message
+            alert(error.response?.data?.error || 'Login failed. Please check your credentials.');
         }
     };
 

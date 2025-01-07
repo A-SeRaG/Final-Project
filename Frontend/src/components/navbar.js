@@ -7,10 +7,9 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../images/Logo1.jpg";
 
-
 const NavbarScroll = () => {
   return (
-    <Navbar expand="lg" style={{backgroundColor:'white'}}>
+    <Navbar expand="lg" style={{ backgroundColor: "white" }}>
       <Container fluid>
         <Navbar.Brand href="#" id="logo">
           <img alt="" src={logo} width="60" height="60" />
@@ -53,6 +52,9 @@ const NavbarScroll = () => {
             </NavDropdown>
           </Nav>
 
+          <Nav.Link href="/cartpage" className="nav-i m-2">
+            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
+          </Nav.Link>
           <Form className="d-flex">
             <Form.Control
               type="search"
@@ -67,10 +69,6 @@ const NavbarScroll = () => {
               />
             </Button>
           </Form>
-
-          <Nav.Link href="/cartpage" className="nav-i m-2">
-            <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-          </Nav.Link >
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -8,14 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../images/Logo1.jpg";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirecting
 
-export default function Usernavbar() {
+export default function Usernavbar({ onLogout }) {
   const navigate = useNavigate(); // Hook to navigate programmatically
 
   const handleLogout = () => {
-    // Remove the token from localStorage
-    localStorage.removeItem('token');
-    // Optionally redirect to login page or home page after logout
-    navigate('/login'); // Redirect to login page
+    onLogout(); // Call onLogout function passed from App.js
+    navigate('/'); // Redirect to home page ("/")
   };
 
   return (
@@ -65,7 +63,7 @@ export default function Usernavbar() {
                 <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
               </Nav.Link>
 
-              <Nav.Link href="/profile" className="nav-i">
+              <Nav.Link href="" className="nav-i">
                 <FontAwesomeIcon icon="fa-solid fa-user" />
               </Nav.Link>
               <NavDropdown className="me-3" id="navbarScrollingDropdown">
