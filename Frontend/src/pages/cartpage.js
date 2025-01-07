@@ -75,7 +75,6 @@ const CartPage = () => {
       )
     );
   };
-
   const handleCheckout = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -85,9 +84,23 @@ const CartPage = () => {
         return;
       }
 
+      // Update each cart item's quantity before checkout
+      for (const item of cartItems) {
+        await axios.patch(
+          `http://localhost:8080/api/v1/order-items/${item.id}`,
+          { quantity: item.quantity },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+      }
+
+      // Proceed with checkout
       const checkoutResponse = await axios.post(
         "http://localhost:8080/api/v1/checkout",
-        { cartItems }, // Send cart items in the request body
+        { cartItems },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -97,7 +110,7 @@ const CartPage = () => {
 
       if (checkoutResponse.status === 200) {
         alert("Checkout successful!");
-        navigate("/Home"); // Redirect to home page
+        navigate("/Home");
       }
     } catch (error) {
       console.error("Error during checkout:", error);
