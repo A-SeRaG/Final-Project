@@ -143,7 +143,7 @@ const CartPage = () => {
                   {product ? (
                     <>
                       <img
-                        src={`http://localhost:8080/uploads/${product.image}`}
+                        src={product.imageURL}
                         alt={product.name}
                         style={{
                           width: "100px",
