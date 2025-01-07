@@ -196,7 +196,7 @@ Navigate to the Frontend folder and start the React application:
 
 ```bash
 cd ../Frontend
-npm run start
+npm start
 ```
 
 ---
