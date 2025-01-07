@@ -69,6 +69,7 @@ const CategoryBasic = () => {
                 }}
                 fluid
               />
+
               <Card.Title>childern</Card.Title>
             </Card.Body>
           </Card>
@@ -77,13 +78,13 @@ const CategoryBasic = () => {
           {" "}
           <Card style={{ textAlign: "center" }}>
             <Image
-              src="http://localhost:8080/uploads/shoes/1736153677185.jpg"
               style={{
                 height: "300px",
-                width: "300px",
+                width: "100%",
                 objectFit: "cover",
               }}
               fluid
+              src="http://localhost:8080/uploads/shoes/1736153677185.jpg"
             />
             <Card.Body>
               <Card.Title>shoes</Card.Title>
@@ -97,7 +98,7 @@ const CategoryBasic = () => {
               src="http://localhost:8080/uploads/bags/1736154380153.jpg"
               style={{
                 height: "300px",
-                width: "300px",
+                width: "100%",
                 objectFit: "cover",
               }}
               fluid

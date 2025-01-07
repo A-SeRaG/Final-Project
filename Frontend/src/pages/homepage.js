@@ -1,4 +1,4 @@
-import NavbarScroll from '../components/navbar.js';
+
 import Footer from '../components/footer.js';
 import SwiperParent from '../components/swiper.js';
 import Timer from '../components/timer.js';
@@ -12,7 +12,7 @@ import Release from '../components/release.js';
 const HomePage = () => {
     return (
       <div>
-        <NavbarScroll/>
+   
         <SwiperParent />
         <Timer />
         <Basicard />

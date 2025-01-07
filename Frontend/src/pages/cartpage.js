@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"; // Import for navigation
-import NavbarScroll from "../components/navbar.js";
+
 import Footer from "../components/footer.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -120,7 +120,6 @@ const CartPage = () => {
 
   return (
     <div>
-      <NavbarScroll />
       <h1 style={{ textAlign: "center", margin: "15px" }}>Cart Page</h1>
       <div style={{ textAlign: "center", margin: "10px" }}>
         {products.length > 0 ? (

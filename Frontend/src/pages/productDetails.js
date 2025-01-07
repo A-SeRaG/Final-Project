@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Button } from "react-bootstrap";
-import NavbarScroll from "../components/navbar";
+import { Container} from "react-bootstrap";
+
 import Footer from "../components/footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
@@ -85,7 +85,7 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <NavbarScroll />
+  
       <Container style={{ margin: "20px" }}>
         <div className="row">
           <div className="col-md-6">
@@ -102,7 +102,7 @@ const ProductDetails = () => {
             <h4>${product.price}</h4>
             <Button variant="primary" onClick={handleAddToCart}>
               Add to Cart
-            </Button>
+            </button>
           </div>
         </div>
       </Container>
