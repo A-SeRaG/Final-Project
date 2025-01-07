@@ -163,7 +163,7 @@ Fork or clone the repository from GitHub into your local machine:
 
 ```bash
 git clone https://github.com/A-SeRaG/Final-Project.git
-cd A-SeRaG-Final-Project
+cd Final-Project
 ```
 ## 2. Install Dependencies
 
@@ -188,14 +188,12 @@ npm install
 Navigate to the Backend folder and start the server:
 
 ```bash
-cd ../Backend
 node app.js
 ```
 ### Run the Frontend:
 Navigate to the Frontend folder and start the React application:
 
 ```bash
-cd ../Frontend
 npm start
 ```
 
