@@ -13,6 +13,7 @@ import { Pagination } from "swiper/modules";
 
 export default function Release() {
   return (
+    <div>
     <Container className="release">
       <span className="bordy"> products </span>
       <h2> Explore our products: </h2>
@@ -117,8 +118,7 @@ export default function Release() {
           />
         </SwiperSlide>
       </Swiper>
-    
-        <Link to="/Fullproducts" style={{ textDecoration: "none" }}>
+      <Link to="/Fullproducts" style={{ textDecoration: "none" }}>
           {" "}
           <Button id="botn"
             style={{ backgroundColor: "var(--second-color)" }}
@@ -128,7 +128,10 @@ export default function Release() {
             View All
           </Button>{" "}
         </Link>
-  
-    </Container>
+      </Container>
+    
+        
+        </div>
+    
   );
 }

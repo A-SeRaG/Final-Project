@@ -205,8 +205,9 @@
     }
     /* start .fullproducts component */
     .release{
+  
       margin-top: var(--main-margin-top);
-      margin-bottom: var(--main-margin-top);
+      margin-bottom: var(--main-margin-top );
      
       }
     #botn{
@@ -243,7 +244,9 @@
       height: 100%;
       object-fit: cover;
     }
-   
+   .release .mySwiper{
+  margin-top: 50px;
+   }
     
       
     /* start about */

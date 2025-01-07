@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container} from "react-bootstrap";
-import NavbarScroll from "../components/navbar";
+
 import Footer from "../components/footer";
 import axios from "axios";
 
@@ -40,7 +40,7 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <NavbarScroll />
+  
       <Container style={{ margin: "20px" }}>
         <div className="row">
           <div className="col-md-6">

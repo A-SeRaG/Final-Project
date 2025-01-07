@@ -1,6 +1,5 @@
 import "./App.css";
 import HomePage from "./pages/homepage.js";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Erorpage from "./pages/Erorpage.js";
 import Useracount from "./pages/useraccountpage.js";
@@ -15,20 +14,24 @@ import UserProfilepage from "./pages/userprofilepage.js";
 import Loginpage from "./pages/loginpage.js";
 import CartPage from "./pages/cartpage.js";
 import ProductDetails from "./pages/productDetails.js";
+import Usernavbar from "./components/usernavbar.js";
+import NavbarScroll from "./components/navbar.js";
+import React, { useState } from "react";
+
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Assuming you want to track login state
+
   return (
     <BrowserRouter>
+      {/* Conditionally render Usernavbar if logged in, otherwise show NavbarScroll */}
+      {isLoggedIn ? <Usernavbar /> : <NavbarScroll />}
+      
       <Routes>
         {/* Define routes for each page/component */}
         <Route path="/about" element={<Aboutpage />} />
-
-        {/* Home route with all components combined */}
         <Route path="/home" element={<HomePage />} />
-
-        {/* Default Route (home or main page) */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} /> {/* Default Route */}
         <Route path="/contact" element={<Contactpage />} />
-        <Route path="/*" element={<Erorpage />} />
         <Route path="/Fullproducts" element={<Fullporductspage />} />
         <Route path="/womenpage" element={<Womenpage />} />
         <Route path="/menpage" element={<Menpage />} />
@@ -36,12 +39,13 @@ const App = () => {
         <Route path="/shoesbags" element={<Shoesbagspage />} />
         <Route path="/profile" element={<UserProfilepage />} />
         <Route path="/sign-up" element={<Loginpage />} />
-        <Route path='/cartpage' element={<CartPage/>}/>
-        <Route path="/useraccount" element={<Useracount />} exact />
+        <Route path='/cartpage' element={<CartPage />} />
+        <Route path="/useraccount" element={<Useracount />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
+        
+        {/* Catch-all route for unmatched paths */}
+        <Route path="/*" element={<Erorpage />} />
       </Routes>
-
-      {/* Footer stays at the bottom */}
     </BrowserRouter>
   );
 };
